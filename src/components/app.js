@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import GithubCorner from 'react-github-corner';
+
 export default class extends Component {
   constructor(props) {
     super(props)
@@ -11,13 +13,14 @@ export default class extends Component {
   }
 
   componentDidMount() {
-    axios.get("https://petstash-backoffice.herokuapp.com/store/get-categories"
+    axios.get("https://petstash-backoffice.herokuapp.com/store/get-categories",
     ).then(response => {
       const categories_list = []
       response.data.map(category_data => {
         let category = {
           name: category_data.shop_category_name,
-          icon_url: category_data.shop_category_icon_url
+          icon_url: category_data.shop_category_icon_url,
+          id: category_data.shop_category_id
         }
         categories_list.push(category)
       })
@@ -34,6 +37,7 @@ export default class extends Component {
   render() {
     return (
       <div className='app'>
+        <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left'/>
         <h1>PetStash Supply Co.</h1>
         <h2>Category List:</h2>
         {
@@ -41,7 +45,7 @@ export default class extends Component {
             const icon_path = require.context('../../static/assets/images', true); 
             let icon_url = icon_path('./' + category.icon_url);
             return (
-              <img src={icon_url}/>
+              <img key={category.id} src={icon_url}/>
             )
           })
         }
