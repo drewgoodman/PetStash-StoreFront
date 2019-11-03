@@ -7,6 +7,8 @@ import {
 import Header from './nav/header';
 import NavBar from './nav/navbar';
 
+import Home from "./pages/home";
+
 import Icons from './icons'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -20,8 +22,32 @@ export default class extends Component {
     Icons();
 
     this.state = {
+      isLoading: true,
+      loggedInStatus: "NOT_LOGGED_IN",
       categories: []
     }
+
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+    this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleSuccessfulLogin() {
+    this.setState({
+      loggedInStatus: "LOGGED_IN"
+    });
+  }
+
+  handleUnsuccessfulLogin() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    });
+  }
+
+  handleLogout() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    })
   }
 
   componentDidMount() {
@@ -42,7 +68,7 @@ export default class extends Component {
         }
         categories_list.push(category)
       })
-      this.setState ({
+      this.setState({
         categories: categories_list
       })
       console.log(this.state.categories)
@@ -55,27 +81,31 @@ export default class extends Component {
   render() {
     return (
       <div className='app'>
-        <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left'/>
-        <Header />
-        <NavBar />
+        <BrowserRouter>
+          <div>
 
+            <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
+            <Header />
+            <NavBar categories={this.state.categories} />
+{/* 
+            <CartModal />
+            <LoginModal /> */}
 
-        <h1>PetStash Supply Co.</h1>
-        <h2>Category List:</h2>
-        <div className="categories">
-        {
-          this.state.categories.map(category => {
-            const icon_path = require.context('../../static/assets/images', true); 
-            let icon_url = icon_path('./' + category.icon_url);
-            return (
-              <img key={category.id} src={icon_url} data-aos="fade-up"/>
-            )
-          })
-        }
+            <Switch>
+           <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />   
+              {/* <Route exact path="/register" component={Register} />
+              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/faq" component={FAQPage} />
+              <Route exact path="/shop/all" component={ShopCategory} />
+              <Route exact path="/shop/:slug" component={ShopCategory} />
+              <Route component={NoMatch} /> */}
 
-        </div>
-        {/* TODO: Footer */}
-      </div>
+            </Switch>
+
+          </div>
+          {/* TODO: Footer */}
+        </BrowserRouter>
+      </div >
     )
   }
 }

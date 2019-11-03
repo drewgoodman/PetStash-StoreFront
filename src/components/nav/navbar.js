@@ -12,7 +12,14 @@ export default class NavBar extends Component {
   render() {
       return (
           <div className="navbar">
-              <h1> This is the navbar</h1>
+              <a href="#">All Products</a>
+              {
+                  this.props.categories.map(category => {
+                      return (
+                        <a key={category.id} href="#">{category.name}</a>
+                      )
+                  })
+                }
           </div>
       )
   }
