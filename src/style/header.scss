@@ -6,12 +6,15 @@
 
     &__left {
         grid-column: brand-s/brand-e;
+        display: flex;
+        justify-content: center;
     }
 
     &__middle {
         grid-column: banner-s/banner-e;
         height: 150px;
-        filter: blur(2px);
+        color: white;
+        font-weight: 800;
     }
 
     &__right {

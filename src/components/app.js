@@ -8,6 +8,8 @@ import Header from './nav/header';
 import NavBar from './nav/navbar';
 
 import Home from "./pages/home";
+import Register from './pages/register';
+import Login from './pages/login';
 
 import Icons from './icons'
 import AOS from 'aos';
@@ -85,16 +87,16 @@ export default class extends Component {
           <div>
 
             <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
-            <Header />
-            <NavBar categories={this.state.categories} />
+            <Header loggedInStatus={this.state.loggedInStatus} />
+            <NavBar categories={this.state.categories}/>
 {/* 
-            <CartModal />
-            <LoginModal /> */}
+            <CartModal /> */}
 
             <Switch>
            <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />   
-              {/* <Route exact path="/register" component={Register} />
-              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              {/* <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/faq" component={FAQPage} />
               <Route exact path="/shop/all" component={ShopCategory} />
               <Route exact path="/shop/:slug" component={ShopCategory} />

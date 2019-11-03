@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import RegisterForm from '../auth/registerForm';
-
-export default class Register extends Component {
+export default class Login extends Component {
   constructor(props) {
       super(props)
 
@@ -14,8 +12,7 @@ export default class Register extends Component {
   render() {
       return (
           <div>
-              <h1>User Registration</h1>
-              <RegisterForm />
+              <h1>Login Page</h1>
           </div>
       )
   }
