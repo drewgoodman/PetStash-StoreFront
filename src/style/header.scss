@@ -1,0 +1,27 @@
+.header {
+    height: 150px;
+    display: grid;
+    grid-template-columns: 15px [brand-s] 300px [brand-e banner-s] 1fr [banner-e links-s] 200px [links-e] 15px;
+    align-items: center;
+    width: 100%;
+
+    &__left {
+        grid-column: brand-s/brand-e;
+    }
+
+    &__middle {
+        grid-column: banner-s/banner-e;
+        height: 100%;
+        filter: blur(2px);
+    }
+
+    &__right {
+        grid-column: links-s/links-e;
+    }
+
+
+    &__icon {
+        width: 120px;
+        height: 120px;
+    }
+}

@@ -21,8 +21,23 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-.app {
-    margin-top: 2rem;
+
+.categories {
     display: grid;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    width: 100%;
+
+    & img {
+        height: 240px;
+        width: 240px;
+    }
+
 }
+
+// DEFAULT
+@import "./mixins";
+@import "./constants";
+
+// NAVIGATION
+@import "./navbar";
+@import "./header";
