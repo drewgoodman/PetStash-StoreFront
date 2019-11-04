@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
+import LogoutLink from '../auth/logoutLink'
+
 import storeIcon from "../../../static/assets/images/icon/store.png"
 import storeBanner from "../../../static/assets/images/banners/banner-new.jpg"
 
@@ -45,6 +47,7 @@ class Header extends Component {
                         Login
                     </NavLink>
                     </div>
+                    <LogoutLink />
                 </div>
             </div>
         )

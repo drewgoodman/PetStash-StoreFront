@@ -29,6 +29,7 @@ export default class extends Component {
       categories: []
     }
 
+    this.getLoginStatus = this.getLoginStatus.bind(this);
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -52,8 +53,25 @@ export default class extends Component {
     })
   }
 
+  getLoginStatus() {
+    return axios.get("https://petstash-backoffice.herokuapp.com/store/login-status", {withCredentials: true}
+    ).then(response => {
+      let loginStatus = response.data.loginStatus;
+      console.log(loginStatus)
+      if (loginStatus) {
+        this.handleSuccessfulLogin();
+      } else {
+        this.handleUnsuccessfulLogin();
+      }
+    }).catch(error => {
+      console.log("There was an error when checking user authentication", error);
+    })
+  }
+
   componentDidMount() {
 
+    this.getLoginStatus();
+    
     AOS.init({
       duration: 500
     });
