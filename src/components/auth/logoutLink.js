@@ -17,6 +17,7 @@ class LogoutLink extends Component {
     axios.get("https://petstash-backoffice.herokuapp.com/store/logout", {withCredentials: true}
     ).then(response => {
         if (response.data.logoutSuccessful) {
+            this.props.handleLogout();
             this.props.history.push("/");
             alert("Logout successful.")
         }

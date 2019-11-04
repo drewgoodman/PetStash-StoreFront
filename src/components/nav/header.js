@@ -47,7 +47,10 @@ class Header extends Component {
                         Login
                     </NavLink>
                     </div>
-                    <LogoutLink />
+                    <LogoutLink handleLogout={this.props.handleLogout} />
+                    <div>
+                    <a onClick={this.props.openCartModal}>Your Cart</a>
+                    </div>
                 </div>
             </div>
         )

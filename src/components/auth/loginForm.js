@@ -27,7 +27,8 @@ export default class LoginForm extends Component {
         ).then(response => {
             console.log(response.data);
             if (response.data.loginStatus) {
-                alert("User successfully registered!")
+                this.props.handleSuccessfulLogin();
+                alert("Successfully logged in!");
             } else {
                 this.setState({
                     errorText: response.data.errorText

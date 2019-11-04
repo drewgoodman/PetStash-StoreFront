@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { withRouter } from 'react-router';
 
 class NavBar extends Component {
@@ -14,11 +15,11 @@ class NavBar extends Component {
   render() {
       return (
           <div className="navbar">
-              <a href="#">All Products</a>
+              <Link to="/shop/all">All Products</Link>
               {
                   this.props.categories.map(category => {
                       return (
-                        <a key={category.id} href="#">{category.name}</a>
+                          <Link key={category.id} to={`/shop/${category.route}`}>{category.name}</Link>
                       )
                   })
                 }
