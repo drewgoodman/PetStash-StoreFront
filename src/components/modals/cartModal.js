@@ -75,6 +75,7 @@ class CartModal extends Component {
         ).then(response => {
             alert("Cart item deleted.")
             this.setState({
+                cartCount: this.state.cartCount - 1,
                 cartItems: this.state.cartItems.filter(item => {
                     return item.cart_item_id !== product.cart_item_id;
                 })

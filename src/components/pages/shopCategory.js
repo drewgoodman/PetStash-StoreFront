@@ -16,7 +16,7 @@ export default class ShopCategory extends Component {
     }
 
     getCategoryProducts() {
-        const route = this.state.currentCategory == "" ? "" : `/${this.state.currentCategory}`
+        const route = this.state.currentCategory === "all" ? "" : `/${this.state.currentCategory}`
         axios.get(
             `https://petstash-backoffice.herokuapp.com/store/get-products${route}`
         ).then(response => {
@@ -28,6 +28,7 @@ export default class ShopCategory extends Component {
             console.log("An error occured retrieving category products", error);
         })
     }
+
 
     componentDidMount() {
         this.getCategoryProducts();

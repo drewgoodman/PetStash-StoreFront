@@ -80,9 +80,9 @@ export default class Checkout extends Component {
                 this.deleteCart();
                 if (response.data.transactionSuccess) {
                     alert("Transaction placed!")
-                    history.push('/')
+                    history.push('/account')
                 } else {
-                    alert("An error has occured")
+                    alert("An error has occurred")
                 }
             }).catch(error => {
                 console.log("An error has occured with creating a transaction", error);
@@ -159,7 +159,7 @@ export default class Checkout extends Component {
                         return (
                             <div key={product.cart_item_id}>
                             {product.shop_product_name} | 
-                            ${product.shop_product_price} (x ${product.cart_qty})
+                            ${product.shop_product_price} (x {product.cart_qty})
                             </div>
                         )
                     })
@@ -184,7 +184,7 @@ export default class Checkout extends Component {
 
                 <ShippingModal
                     shippingModalOpen={this.state.shippingModalOpen}
-                    openShippingModal={this.openShippingtModal}
+                    openShippingModal={this.openShippingModal}
                     closeShippingModal={this.closeShippingModal}
                 />
             </div>

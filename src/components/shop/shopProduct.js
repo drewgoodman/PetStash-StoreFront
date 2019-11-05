@@ -8,6 +8,7 @@ export default class ShopProduct extends Component {
         this.addProductToCart = this.addProductToCart.bind(this);
     }
 
+    // TODO: Account for loggedInStatus
 
     addProductToCart() {
         let productAdded = {

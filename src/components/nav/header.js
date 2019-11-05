@@ -20,8 +20,9 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="header__left">
+                    <NavLink to="/">
                     <img className="header__icon" src={storeIcon} />
-
+                    </NavLink>
                 </div>
                 <div
                     className="header__middle"
@@ -36,6 +37,9 @@ class Header extends Component {
                     <div className="header__tagline"></div>
                 </div>
                 <div className="header__right">
+                    <NavLink to="/" activeClassName="header-link-active">
+                        Home
+                    </NavLink>
 
                     {this.props.loggedInStatus === "LOGGED_IN" ? (
                         <div>
@@ -46,7 +50,7 @@ class Header extends Component {
                                         Your Account
                                     </NavLink>
                                 </div>
-                                {this.props.cartModalEnabled ? <a onClick={this.props.openCartModal}>Your Cart</a> : null }
+                                {this.props.cartModalEnabled ? <a onClick={this.props.openCartModal}>Your Cart</a> : null}
                             </div>
                         </div>
                     ) : (

@@ -12,7 +12,6 @@ import Register from './pages/register';
 import Login from './pages/login';
 import Account from './pages/account';
 import Checkout from './pages/checkout';
-import TransactionSummary from './pages/transactionSummary';
 
 import CartModal from './modals/cartModal';
 
@@ -87,7 +86,6 @@ export default class extends Component {
   }
 
   openCartModal() {
-    console.log("Open modal")
     this.setState({
       cartModalOpen: true
     })
@@ -147,8 +145,7 @@ export default class extends Component {
       <Route key="account" exact path="/account" component={Account} />,
       <Route key="checkout" exact path="/checkout" render={props => (<Checkout
           enableCartModal={this.enableCartModal}
-          disableCartModal={this.disableCartModal} />)} />,
-      <Route key="transSummary" exact path="/transaction/:slug" component={TransactionSummary} /> 
+          disableCartModal={this.disableCartModal} />)} />
     ];
   }
 
