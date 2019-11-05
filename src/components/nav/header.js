@@ -30,27 +30,40 @@ class Header extends Component {
                         backgroundSize: "cover",
                         backgroundPosition: "center"
                     }}
-                 >
-                     
+                >
+
                     <div className="header__name">PetStash Supply Co.</div>
-                    <div className="header__tagline">Only the finest for your fine pawed, clawed and feathered friends.</div>
+                    <div className="header__tagline"></div>
                 </div>
                 <div className="header__right">
-                    {this.props.loggedInStatus}
-                    <div>
-                    <NavLink to="/register" activeClassName="header-link-active">
-                        Register
-                    </NavLink>
-                    </div>
-                    <div>
-                    <NavLink to="/login" activeClassName="header-link-active">
-                        Login
-                    </NavLink>
-                    </div>
-                    <LogoutLink handleLogout={this.props.handleLogout} />
-                    <div>
-                    <a onClick={this.props.openCartModal}>Your Cart</a>
-                    </div>
+
+                    {this.props.loggedInStatus === "LOGGED_IN" ? (
+                        <div>
+                            <LogoutLink handleLogout={this.props.handleLogout} />
+                            <div>
+                                <div>
+                                    <NavLink to="/account" activeClassName="header-link-active">
+                                        Your Account
+                                    </NavLink>
+                                </div>
+                                {this.props.cartModalEnabled ? <a onClick={this.props.openCartModal}>Your Cart</a> : null }
+                            </div>
+                        </div>
+                    ) : (
+                            <div>
+                                <div>
+                                    <NavLink to="/register" activeClassName="header-link-active">
+                                        Register
+                                    </NavLink>
+                                </div>
+                                <div>
+                                    <NavLink to="/login" activeClassName="header-link-active">
+                                        Login
+                                    </NavLink>
+                                </div>
+                            </div>
+
+                        )}
                 </div>
             </div>
         )

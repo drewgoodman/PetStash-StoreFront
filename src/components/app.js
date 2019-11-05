@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {
-  BrowserRouter, Switch, Route
+  Router, Switch, Route
 } from 'react-router-dom';
 
 import Header from './nav/header';
@@ -10,6 +10,9 @@ import NavBar from './nav/navbar';
 import Home from "./pages/home";
 import Register from './pages/register';
 import Login from './pages/login';
+import Account from './pages/account';
+import Checkout from './pages/checkout';
+import TransactionSummary from './pages/transactionSummary';
 
 import CartModal from './modals/cartModal';
 
@@ -21,6 +24,8 @@ import NoMatch from './pages/noMatch';
 import Icons from './icons'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+import history from '../history';
 
 
 import GithubCorner from 'react-github-corner';
@@ -34,7 +39,8 @@ export default class extends Component {
       isLoading: true,
       loggedInStatus: "NOT_LOGGED_IN",
       categories: [],
-      cartModalOpen: false
+      cartModalOpen: false,
+      cartModalEnabled: true
     }
 
     this.getLoginStatus = this.getLoginStatus.bind(this);
@@ -44,6 +50,8 @@ export default class extends Component {
 
     this.openCartModal = this.openCartModal.bind(this);
     this.closeCartModal = this.closeCartModal.bind(this);
+    this.enableCartModal = this.enableCartModal.bind(this);
+    this.disableCartModal = this.disableCartModal.bind(this);
   }
 
   handleSuccessfulLogin() {
@@ -68,7 +76,6 @@ export default class extends Component {
     return axios.get("https://petstash-backoffice.herokuapp.com/store/login-status", { withCredentials: true }
     ).then(response => {
       let loginStatus = response.data.loginStatus;
-      console.log(loginStatus)
       if (loginStatus) {
         this.handleSuccessfulLogin();
       } else {
@@ -89,6 +96,18 @@ export default class extends Component {
   closeCartModal() {
     this.setState({
       cartModalOpen: false
+    })
+  }
+
+  enableCartModal() {
+    this.setState({
+      cartModalEnabled: true
+    })
+  }
+
+  disableCartModal() {
+    this.setState({
+      cartModalEnabled: false
     })
   }
 
@@ -123,10 +142,20 @@ export default class extends Component {
 
   }
 
+  authorizedPages() {
+    return [
+      <Route key="account" exact path="/account" component={Account} />,
+      <Route key="checkout" exact path="/checkout" render={props => (<Checkout
+          enableCartModal={this.enableCartModal}
+          disableCartModal={this.disableCartModal} />)} />,
+      <Route key="transSummary" exact path="/transaction/:slug" component={TransactionSummary} /> 
+    ];
+  }
+
   render() {
     return (
       <div className='app'>
-        <BrowserRouter>
+        <Router history={history}>
           <div>
 
             <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
@@ -134,6 +163,7 @@ export default class extends Component {
               loggedInStatus={this.state.loggedInStatus}
               handleLogout={this.handleLogout}
               openCartModal={this.openCartModal}
+              cartModalEnabled={this.state.cartModalEnabled}
             />
             <NavBar categories={this.state.categories} />
             
@@ -146,10 +176,10 @@ export default class extends Component {
             <Switch>
               <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />
               <Route exact path="/register" component={Register} />
-
               <Route exact path="/login" render={props => (<Login handleSuccessfulLogin={this.handleSuccessfulLogin} />)} />
-              {/* <Route exact path="/checkout" component={Checkout} /> */}
-              
+
+              {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
+
               <Route exact path="/shop/:slug" component={ShopCategory} />
               <Route exact path="/faq" component={FAQPage} />
               <Route component={NoMatch} />
@@ -158,7 +188,7 @@ export default class extends Component {
 
           </div>
           {/* TODO: Footer */}
-        </BrowserRouter>
+        </Router>
       </div >
     )
   }

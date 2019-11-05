@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import history from "../../history";
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -27,8 +28,8 @@ export default class LoginForm extends Component {
         ).then(response => {
             console.log(response.data);
             if (response.data.loginStatus) {
+                history.push('/')
                 this.props.handleSuccessfulLogin();
-                alert("Successfully logged in!");
             } else {
                 this.setState({
                     errorText: response.data.errorText
