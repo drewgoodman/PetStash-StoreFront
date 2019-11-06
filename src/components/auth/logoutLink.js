@@ -3,6 +3,8 @@ import { withRouter } from 'react-router';
 
 import React, { Component } from 'react';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 class LogoutLink extends Component {
   constructor(props) {
       super(props)
@@ -31,6 +33,7 @@ class LogoutLink extends Component {
       return (
           <div>
           <a onClick={this.handleSignOut}>
+            <FontAwesomeIcon icon="sign-out-alt" />
               Logout
           </a>
           </div>

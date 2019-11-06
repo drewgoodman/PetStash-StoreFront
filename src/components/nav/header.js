@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import LogoutLink from '../auth/logoutLink'
 
 import storeIcon from "../../../static/assets/images/icon/store.png"
@@ -43,24 +45,34 @@ class Header extends Component {
 
                     {this.props.loggedInStatus === "LOGGED_IN" ? (
                         <div>
-                            <LogoutLink handleLogout={this.props.handleLogout} />
+                            <div> 
+                                <LogoutLink handleLogout={this.props.handleLogout} />
+                            </div>
                             <div>
                                 <div>
+                                    <FontAwesomeIcon icon="user-cog" />
                                     <NavLink to="/account" activeClassName="header-link-active">
                                         Your Account
                                     </NavLink>
                                 </div>
-                                {this.props.cartModalEnabled ? <a onClick={this.props.openCartModal}>Your Cart</a> : null}
+                                {this.props.cartModalEnabled ? (
+                                    <div>
+                                        <FontAwesomeIcon icon="shopping-cart" />
+                                        <a onClick={this.props.openCartModal}>Your Cart</a>
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
                     ) : (
                             <div>
                                 <div>
+                                    <FontAwesomeIcon icon="user-cog" />
                                     <NavLink to="/register" activeClassName="header-link-active">
                                         Register
                                     </NavLink>
                                 </div>
                                 <div>
+                                    <FontAwesomeIcon icon="sign-in-alt" />
                                     <NavLink to="/login" activeClassName="header-link-active">
                                         Login
                                     </NavLink>
