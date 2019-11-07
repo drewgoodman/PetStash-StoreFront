@@ -192,7 +192,7 @@ export default class extends Component {
 
                 {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
 
-                <Route exact path="/shop/:slug" component={ShopCategory} key={":slug"} />
+                <Route path="/shop/:slug" render={(props) => (<ShopCategory {...props} loggedInStatus={this.state.loggedInStatus}  />)} />
                 <Route exact path="/faq" component={FAQPage} />
                 <Route component={NoMatch} />
 

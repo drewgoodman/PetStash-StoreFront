@@ -38,16 +38,19 @@ export default class ShopCategory extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.currentCategory}
-                <hr />
+            <div className="page-content">
+                <div className="page__heading">Shop {this.state.currentCategory} products:</div>
+                
+                <div className="shop__grid">
                 {
                     this.state.products.map(product => {
                         return (
-                            <ShopProduct key={product.id} product={product} />
+                            <ShopProduct key={product.id} product={product} loggedInStatus={this.props.loggedInStatus}  />
                         )
                     })
                 }
+
+                </div>
             </div>
         )
     }

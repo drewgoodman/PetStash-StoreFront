@@ -8,38 +8,44 @@ export default class ShopProduct extends Component {
         this.addProductToCart = this.addProductToCart.bind(this);
     }
 
-    // TODO: Account for loggedInStatus
 
     addProductToCart() {
-        let productAdded = {
-            product_id: this.props.product.id,
-            quantity: 1
+        if (this.props.loggedInStatus === "LOGGED_IN") {
+            let productAdded = {
+                product_id: this.props.product.id,
+                quantity: 1
+            }
+            axios.post(
+                "https://petstash-backoffice.herokuapp.com/store/cart-add",
+                productAdded,
+                { withCredentials: true }
+            ).then(response => {
+                console.log(response.data);
+                alert(`${this.props.product.shop_product_name} successfully added to your cart!`)
+            }).catch(error => {
+                console.log("There was an error updating your cart", error);
+            })
+
+        } else {
+            alert("You must be logged in to access you cart.")
         }
-        axios.post(
-            "https://petstash-backoffice.herokuapp.com/store/cart-add",
-            productAdded,
-            { withCredentials: true}
-        ).then(response => {
-            console.log(response.data);
-            alert(`${this.props.product.shop_product_name} successfully added to your cart!`)
-        }).catch(error => {
-            console.log("There was an error updating your cart", error);
-        })
     }
 
     render() {
         return (
-            <div>
+            <div className="shop__product-card">
+                <div className="shop__product-title">
+                    {this.props.product.shop_product_name}
+
+                </div>
                 <div>
-                    
-                {this.props.product.shop_product_name}
-                <img src={this.props.product.shop_product_image_url} />
-                ${this.props.product.shop_product_price}
+                    <img src={this.props.product.shop_product_image_url} />
+                    ${this.props.product.shop_product_price}
                 </div>
                 <div>
                     {this.props.product.shop_product_onhand} in stock
                 </div>
-                <div>
+                <div className="shop__product-add">
                     <a onClick={this.addProductToCart}>Add Product to cart</a>
                 </div>
             </div>
