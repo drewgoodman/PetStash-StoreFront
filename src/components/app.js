@@ -126,14 +126,16 @@ export default class extends Component {
           name: category_data.shop_category_name,
           icon_url: category_data.shop_category_icon_url,
           id: category_data.shop_category_id,
-          route: category_data.shop_category_route
+          route: category_data.shop_category_route,
+          banner_url: category_data.shop_category_banner_url,
+          banner_caption: category_data.shop_category_banner_caption,
+          banner_button: category_data.shop_category_banner_button,
         }
         categories_list.push(category)
       })
       this.setState({
         categories: categories_list
       })
-      console.log(this.state.categories)
     }).catch(error => {
       console.log("Error retrieving categories", error)
     })
@@ -144,8 +146,8 @@ export default class extends Component {
     return [
       <Route key="account" exact path="/account" component={Account} />,
       <Route key="checkout" exact path="/checkout" render={props => (<Checkout
-          enableCartModal={this.enableCartModal}
-          disableCartModal={this.disableCartModal} />)} />
+        enableCartModal={this.enableCartModal}
+        disableCartModal={this.disableCartModal} />)} />
     ];
   }
 
@@ -155,7 +157,7 @@ export default class extends Component {
         <Router history={history}>
           <div>
 
-            <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
+            {/* <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' /> */}
             <Header
               loggedInStatus={this.state.loggedInStatus}
               handleLogout={this.handleLogout}
@@ -163,25 +165,29 @@ export default class extends Component {
               cartModalEnabled={this.state.cartModalEnabled}
             />
             <NavBar categories={this.state.categories} />
-            
+
             <CartModal
               cartModalOpen={this.state.cartModalOpen}
               openCartModal={this.openCartModal}
               closeCartModal={this.closeCartModal}
             />
 
-            <Switch>
-              <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" render={props => (<Login handleSuccessfulLogin={this.handleSuccessfulLogin} />)} />
+            <div className="page-container">
+              <Switch>
+                <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" render={props => (<Login handleSuccessfulLogin={this.handleSuccessfulLogin} />)} />
 
-              {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
+                {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
 
-              <Route exact path="/shop/:slug" component={ShopCategory} key={":slug"} />
-              <Route exact path="/faq" component={FAQPage} />
-              <Route component={NoMatch} />
+                <Route exact path="/shop/:slug" component={ShopCategory} key={":slug"} />
+                <Route exact path="/faq" component={FAQPage} />
+                <Route component={NoMatch} />
 
-            </Switch>
+              </Switch>
+
+            </div>
+
 
           </div>
           {/* TODO: Footer */}

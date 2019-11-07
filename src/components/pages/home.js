@@ -4,6 +4,10 @@ import { withRouter } from 'react-router';
 
 import allIcon from "../../../static/assets/images/icon/all.png"
 
+import storeBanner from "../../../static/assets/images/banners/banner-new.jpg"
+
+import allBanner from "../../../static/assets/images/banners/banner1.jpg"
+
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -15,22 +19,53 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="home">
+                <div
+                    className="home__main-banner"
+                    style={{
+                        background: "url(" + storeBanner + ") no-repeat",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
+                    }} />
                 <h1>PetStash Supply Co.</h1>
                 <hr />
                 <h2>SHOP BY CATEGORY</h2>
-                <div className="categories">
-                    <Link to={`/shop/all`}>
-                        <img src={allIcon} data-aos="fade-up" />
-                    </Link>
+                <div className="home__categories">
+                    <div
+                        className="home__category-banner"
+                        data-aos="fade-left"
+                        style={{
+                            background: "url(" + allBanner + ") no-repeat",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center"
+
+                        }}>
+                        <div className="home__category-banner__caption"><p>Not sure where to start?</p></div>
+                        <Link to={`/shop/all`} className="home__category-banner__button">
+                            SHOP ALL PRODUCTS
+                            </Link>
+                    </div>
+
                     {
                         this.props.categories.map(category => {
-                            const icon_path = require.context('../../../static/assets/images', true);
-                            let icon_url = icon_path('./' + category.icon_url);
+                            const banner_path = require.context('../../../static/assets/images', true);
+                            let banner_url = banner_path('./' + category.banner_url);
                             return (
-                                <Link key={category.id} to={`/shop/${category.route}`}>
-                                    <img src={icon_url} data-aos="fade-up" />
-                                </Link>
+                                <div
+                                    key={category.id}
+                                    className="home__category-banner"
+                                    data-aos="fade-left"
+                                    style={{
+                                        background: "url(" + banner_url + ") no-repeat",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center"
+
+                                    }}>
+                                    <div className="home__category-banner__caption"><p>{category.banner_caption}</p></div>
+                                    <Link to={`/shop/${category.route}`} className="home__category-banner__button">
+                                        {category.banner_button}
+                                    </Link>
+                                </div>
                             )
                         })
                     }

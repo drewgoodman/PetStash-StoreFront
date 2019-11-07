@@ -6,8 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import LogoutLink from '../auth/logoutLink'
 
-import storeIcon from "../../../static/assets/images/icon/store.png"
-import storeBanner from "../../../static/assets/images/banners/banner-new.jpg"
+import storeIcon from "../../../static/assets/images/icon/store-alt.png"
 
 class Header extends Component {
     constructor(props) {
@@ -28,11 +27,6 @@ class Header extends Component {
                 </div>
                 <div
                     className="header__middle"
-                    style={{
-                        background: "url(" + storeBanner + ") no-repeat",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center"
-                    }}
                 >
 
                     <div className="header__name">PetStash Supply Co.</div>

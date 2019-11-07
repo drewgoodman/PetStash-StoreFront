@@ -23,7 +23,6 @@ export default class ShopCategory extends Component {
             this.setState({
                 products: response.data
             })
-            console.log(this.state.products);
         }).catch(error => {
             console.log("An error occured retrieving category products", error);
         })

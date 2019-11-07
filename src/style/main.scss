@@ -19,6 +19,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
+
 }
 
 
@@ -31,12 +32,21 @@ body {
         height: 240px;
         width: 240px;
     }
+}
 
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+    justify-items: center;
 }
 
 // DEFAULT
 @import "./mixins";
 @import "./constants";
+
+// PAGES
+@import "./home";
 
 // NAVIGATION
 @import "./navbar";

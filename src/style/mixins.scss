@@ -1,0 +1,7 @@
+
+
+@mixin category-shadow {
+    -webkit-box-shadow: 7px 6px 22px -5px rgba(0,0,0,0.47);
+    -moz-box-shadow: 7px 6px 22px -5px rgba(0,0,0,0.47);
+    box-shadow: 7px 6px 22px -5px rgba(0,0,0,0.47);
+}
