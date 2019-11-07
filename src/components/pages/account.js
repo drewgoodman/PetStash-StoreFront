@@ -91,48 +91,69 @@ export default class Account extends Component {
 
     render() {
         return (
-            <div>
-                <h1></h1>
-                <hr />
-                <h2>Account Details</h2>
+            <div className="page-content two-column two-column__gap30">
                 <div>
-                    Name: {this.state.user.user_first_name} {this.state.user.user_last_name}
-                </div>
-                <div>
-                    Email: {this.state.user.user_email}
-                </div>
-                {
-                    this.state.user.user_address ? (
+                    <div className="page__heading">Account Details</div>
+                    <div className="two-column page__row-gap">
+                        <div className="page__label">Name</div>
                         <div>
-                            <div>
-                                Address: {this.state.user.user_address} {this.state.user.user_city}, {this.state.user.user_state} {this.state.user.user_zip}
-                            </div>
-                            <div>
-                                <a  className="btn" onClick={this.openShippingModal}>Change Shipping Address</a>
-                            </div>
+                            {this.state.user.user_first_name} {this.state.user.user_last_name}
                         </div>
-                    ) : (
-                            <div>
-                                <a  className="btn" onClick={this.openShippingModal}>Add Shipping Address</a>
-                            </div>
-                        )
-                }
 
-                <hr />
-                <h2>Order History</h2>
-                {
-                    this.state.transactionHistory.map(order => {
-                        return (
-                            <div key={order.transaction_id}>
-                                <h3>{moment(order.transaction_date).format('MMMM Do YYYY, h:mm a')}</h3>
-                                ${order.transaction_cost} | {order.transaction_address} {order.transaction_city}, {order.transaction_state} {order.transaction_zip}
-                                <div>
-                                    <a onClick={() => this.openOrderModal(order)}>View Order Details</a>
-                                </div>
+                        <div className="page__label">Email</div>
+                        <div>
+                            {this.state.user.user_email}
+                        </div>
+
+                        <div className="page__label">Address</div>
+
+                        {
+                            this.state.user.user_address ? (
+                                    <div>
+                                        {this.state.user.user_address} {this.state.user.user_city}, {this.state.user.user_state} {this.state.user.user_zip}
+                                    </div>
+                            ) : (
+                                <div>No shipping address found.</div>
+                                )
+                        }
+                    </div>
+                    <div className="page__space30" />
+                    {
+                        this.state.user.user_address ? (
+                            <div>
+                                <a className="btn" onClick={this.openShippingModal}>Change Shipping Address</a>
+                            </div>
+                        ) : (
+                            <div>
+                                <a className="btn" onClick={this.openShippingModal}>Add Shipping Address</a>
                             </div>
                         )
-                    })
-                }
+                    }
+
+
+                </div>
+
+                <div>
+                    <div className="page__heading">Order History</div>
+                    <div className="page__scroll page__light-bg">
+                    {
+                        this.state.transactionHistory.map(order => {
+                            return (
+                                <div key={order.transaction_id}>
+                                    <h3>{moment(order.transaction_date).format('MMMM Do YYYY, h:mm a')}</h3>
+                                    ${order.transaction_cost} | {order.transaction_address} {order.transaction_city}, {order.transaction_state} {order.transaction_zip}
+                                    <div>
+                                        <a onClick={() => this.openOrderModal(order)}>View Order Details</a>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+
+                    </div>
+
+                </div>
+
                 <ShippingModal
                     shippingModalOpen={this.state.shippingModalOpen}
                     openShippingModal={this.openShippingModal}

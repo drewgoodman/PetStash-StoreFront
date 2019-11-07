@@ -202,7 +202,7 @@ export default class extends Component {
 
 
           </div>
-          <Footer />
+          <Footer loggedInStatus={this.state.loggedInStatus} />
         </Router>
       </div >
     )

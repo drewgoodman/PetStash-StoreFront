@@ -34,6 +34,14 @@ export default class Footer extends Component {
                             <NavLink onClick={() => onLinkClick} className="footer__link" to="/">Go to Home Page</NavLink>
                             <NavLink onClick={() => onLinkClick} className="footer__link" to="/shop/all">Shop All Products</NavLink>
                             <NavLink onClick={() => onLinkClick}  className="footer__link" to="/faq">Frequently Asked Questions</NavLink>
+                            {
+                                this.props.loggedInStatus === "LOGGED_IN" ? (
+                                    <NavLink onClick={() => onLinkClick} className="footer__link" to="/account">View Account Details</NavLink>
+
+                                ) : (
+                                    <NavLink onClick={() => onLinkClick} className="footer__link" to="/register">Create an Account</NavLink>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
