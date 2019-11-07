@@ -31,6 +31,7 @@ export default class ShopCategory extends Component {
 
     componentDidMount() {
         this.getCategoryProducts();
+        window.scrollTo(0, 0);
     }
 
 

@@ -14,7 +14,9 @@ html {
 body {
     overflow-x: hidden;
     font-weight: normal;
-
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 240px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -23,8 +25,8 @@ body {
 }
 
 .backdrop-img {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     z-index: -10;
     position: fixed;
     filter: blur(3px);
@@ -47,7 +49,7 @@ body {
     margin-top: 30px;
     display: grid;
     // grid-template-columns: minmax(20px, 250px) [s] 1fr [e] minmax(20px, 250px);
-    grid-template-columns: 1fr [s] minmax(500px, 1000px) [e] 1fr;
+    grid-template-columns: 1fr [s] minmax(300px, 1000px) [e] 1fr;
 }
 
 // DEFAULT
@@ -60,3 +62,4 @@ body {
 // NAVIGATION
 @import "./navbar";
 @import "./header";
+@import "./footer";

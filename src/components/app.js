@@ -6,6 +6,7 @@ import {
 
 import Header from './nav/header';
 import NavBar from './nav/navbar';
+import Footer from './nav/footer';
 
 import Home from "./pages/home";
 import Register from './pages/register';
@@ -201,7 +202,7 @@ export default class extends Component {
 
 
           </div>
-          {/* TODO: Footer */}
+          <Footer />
         </Router>
       </div >
     )
