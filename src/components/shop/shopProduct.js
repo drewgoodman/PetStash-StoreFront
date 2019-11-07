@@ -38,13 +38,22 @@ export default class ShopProduct extends Component {
                     {this.props.product.shop_product_name}
 
                 </div>
-                <div>
-                    <img src={this.props.product.shop_product_image_url} />
-                    ${this.props.product.shop_product_price}
+                <div className="shop__product-display">
+                    <div className="shop__product-image">
+                        <img src={this.props.product.shop_product_image_url} />
+                    </div>
+                    <div className="shop__product-infos">
+                        <div className="shop__product-info">
+                            ${this.props.product.shop_product_price}
+                        </div>
+                        <div className="shop__product-info">
+                            {this.props.product.shop_product_onhand} in stock
+                        </div>
+
+                    </div>
+
                 </div>
-                <div>
-                    {this.props.product.shop_product_onhand} in stock
-                </div>
+
                 <div className="shop__product-add">
                     <a onClick={this.addProductToCart}>Add Product to cart</a>
                 </div>

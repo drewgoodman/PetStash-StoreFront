@@ -32,6 +32,35 @@
         justify-content: center;
     }
 
+    &__product-display {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+    }
+
+    &__product-image {
+        padding: 10px;
+        img {
+            height: 80px;
+            width: 80px;
+        }
+    }
+
+    &__product-infos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100px;
+    }
+
+    &__product-info {
+        background-color: rgba(0,0,0,0.3);
+        width: 75%;
+        color: white;
+        font-size: 0.9rem;
+        padding: 7px;
+    }
+
     &__product-add {
         height: 28px;
         margin-bottom: 9px;

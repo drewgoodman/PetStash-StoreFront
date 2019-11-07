@@ -13,7 +13,7 @@ export default class extends Component {
             address: "",
             city: "",
             zipcode: "",
-            state: "",
+            state: "AL",
             errorText: ""
         }
 
