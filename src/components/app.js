@@ -27,6 +27,9 @@ import 'aos/dist/aos.css';
 import history from '../history';
 
 
+import wallpaperImg from "../../static/assets/images/banners/wallpaper2.jpg"
+
+
 import GithubCorner from 'react-github-corner';
 
 export default class extends Component {
@@ -154,10 +157,18 @@ export default class extends Component {
   render() {
     return (
       <div className='app'>
+        <div
+          className="backdrop-img"
+          style={{
+            background: "url(" + wallpaperImg + ") no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+        }}
+        />
         <Router history={history}>
           <div>
 
-            {/* <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' /> */}
+            <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
             <Header
               loggedInStatus={this.state.loggedInStatus}
               handleLogout={this.handleLogout}
