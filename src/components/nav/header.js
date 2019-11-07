@@ -25,11 +25,10 @@ class Header extends Component {
                     <img className="header__icon" src={storeIcon} />
                     </NavLink>
                 </div>
-                <div
-                    className="header__middle"
-                >
-
-                    <div className="header__name">PetStash Supply Co.</div>
+                <div className="header__middle">
+                    <NavLink className="header__name" to="/">
+                        PetStash Supply Co.
+                    </NavLink>
                 </div>
 
 

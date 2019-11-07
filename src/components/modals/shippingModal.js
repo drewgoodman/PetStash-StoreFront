@@ -153,7 +153,7 @@ export default class extends Component {
                             <option value="WY">Wyoming</option>
                         </select>
                     </div>
-                    <button type="submit">Update Shipping Address</button>
+                    <button  className="btn" type="submit">Update Shipping Address</button>
 
                 </form>
 

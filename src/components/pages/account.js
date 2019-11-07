@@ -108,12 +108,12 @@ export default class Account extends Component {
                                 Address: {this.state.user.user_address} {this.state.user.user_city}, {this.state.user.user_state} {this.state.user.user_zip}
                             </div>
                             <div>
-                                <a onClick={this.openShippingModal}>Change Shipping Address</a>
+                                <a  className="btn" onClick={this.openShippingModal}>Change Shipping Address</a>
                             </div>
                         </div>
                     ) : (
                             <div>
-                                <a onClick={this.openShippingModal}>Add Shipping Address</a>
+                                <a  className="btn" onClick={this.openShippingModal}>Add Shipping Address</a>
                             </div>
                         )
                 }

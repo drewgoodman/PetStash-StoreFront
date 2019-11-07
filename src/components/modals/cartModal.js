@@ -110,8 +110,8 @@ class CartModal extends Component {
                 {
                     this.state.cartCount > 0 ? (
                         <div>
-                            <a onClick={this.handleCheckoutClick}>Proceed to Checkout</a> | 
-                            <a onClick={this.deleteCart}>Clear Cart</a>
+                            <a className="btn" onClick={this.handleCheckoutClick}>Proceed to Checkout</a>
+                            <a className="btn" onClick={this.deleteCart}>Clear Cart</a>
                         </div>
 
                     ) : null
