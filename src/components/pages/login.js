@@ -13,7 +13,7 @@ export default class Login extends Component {
 
   render() {
       return (
-          <div>
+          <div className="page-content">
               <h1>Login</h1>
               <LoginForm handleSuccessfulLogin={this.props.handleSuccessfulLogin} />
           </div>

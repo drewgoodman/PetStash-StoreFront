@@ -13,7 +13,7 @@ export default class Register extends Component {
 
   render() {
       return (
-          <div>
+          <div className="page-content">
               <h1>User Registration</h1>
               <RegisterForm />
           </div>

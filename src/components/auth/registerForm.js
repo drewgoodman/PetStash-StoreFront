@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router';
 
-export default class RegisterForm extends Component {
+class RegisterForm extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            errorText: "No error yet",
+            errorText: "",
             first_name: "",
             last_name: "",
             username: "",
@@ -24,26 +25,37 @@ export default class RegisterForm extends Component {
     }
 
     submitForm(event) {
-        let user_info = {
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
-        }
         event.preventDefault();
-        axios.post(
-            "https://petstash-backoffice.herokuapp.com/store/register-user", user_info
-        ).then(response => {
-            console.log(response.data);
-            if (response.data.registerStatus) {
-                alert("User successfully registered!")
-            } else {
-                alert(response.data.errorText)
+        if (this.state.first_name === "" ||
+            this.state.last_name === "" ||
+            this.state.username === "" ||
+            this.state.email === "") {
+            this.setState({ errorText: "You must fill out first name, last name, username, and email." })
+        } else if (this.state.password.length < 6) {
+            this.setState({ errorText: "Password must be at least 6 characters in length." })
+        } else if (this.state.password !== this.state.confirm_password) {
+            this.setState({ errorText: "Password must be the same in both fields."})
+        } else {
+            let user_info = {
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                username: this.state.username,
+                email: this.state.email,
+                password: this.state.password
             }
-        }).catch(error => {
-            console.log("An error has occured with user registration", error);
-        })
+            axios.post(
+                "https://petstash-backoffice.herokuapp.com/store/register-user", user_info
+            ).then(response => {
+                if (response.data.registerSuccess) {
+                    alert("User successfully registered!");
+                    this.props.history.push("/login");
+                } else {
+                    alert(response.data.errorText);
+                }
+            }).catch(error => {
+                console.log("An error has occured with user registration", error);
+            })
+        }
     }
 
     updateForm(event) {
@@ -90,3 +102,6 @@ export default class RegisterForm extends Component {
         )
     }
 }
+
+
+export default withRouter(RegisterForm);

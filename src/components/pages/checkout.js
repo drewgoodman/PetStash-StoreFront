@@ -149,7 +149,7 @@ export default class Checkout extends Component {
 
     render() {
         return (
-            <div>
+            <div className="page-content">
 
                 <h1>Checkout</h1>
                 <hr />
