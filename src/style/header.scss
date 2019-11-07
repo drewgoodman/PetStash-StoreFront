@@ -1,18 +1,21 @@
 .header {
-    height: 80px;
+    height: 70px;
     display: grid;
 
-    background: rgba(255,255,255,0);
-    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(33%, rgba(255,255,255,0.59)), color-stop(47%, rgba(255,255,255,0.76)), color-stop(67%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
-    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
-    
-    grid-template-columns: 15px [brand-s] 300px [brand-e banner-s] 1fr [banner-e links-s] 200px [links-e] 15px;
+    background: $header-color;
+    border-bottom: 2px solid #5f5f5f;
+    // background: rgba(255,255,255,0);
+    // background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
+    // background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(33%, rgba(255,255,255,0.59)), color-stop(47%, rgba(255,255,255,0.76)), color-stop(67%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+    // background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
+    // background: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
+    // background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
+    // background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+    padding-top: 5px;
+    grid-template-columns: 60px [brand-s] 80px [brand-e logo-s] 2fr [logo-e links-s] 1fr [links-e] 15px;
     width: 100%;
+    align-items: center;
 
     &__left {
         grid-column: brand-s/brand-e;
@@ -20,14 +23,39 @@
         justify-content: center;
     }
 
-    &__middle {
-        grid-column: banner-s/banner-e;
-        height: 150px;
-        font-weight: 800;
-    }
+
 
     &__right {
         grid-column: links-s/links-e;
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 25px;
+    }
+
+    &__link {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: 10px;
+    }
+
+    &__link-icon {
+        font-size: 1.3em;
+    }
+
+    &__link-text {
+        text-decoration: none;
+        color: black;
+        animation: 0.4s all ease-in;
+        border-bottom: 2px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            border-bottom: 2px solid black;
+        }
     }
 
 
@@ -35,4 +63,10 @@
         width: 60px;
         height: 60px;
     }
+}
+.header__name {
+    font-family: 'Srisakdi', cursive;
+    font-weight: 800;
+    font-size: 2.6rem;
+    grid-column: logo-s/logo-e;
 }

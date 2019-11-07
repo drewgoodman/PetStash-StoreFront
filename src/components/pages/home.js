@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { withRouter } from 'react-router';
 
 import allIcon from "../../../static/assets/images/icon/all.png"
-
 import storeBanner from "../../../static/assets/images/banners/banner-new.jpg"
-
 import allBanner from "../../../static/assets/images/banners/banner1.jpg"
+import orderImage from "../../../static/assets/images/info/order.jpg"
+import deliverImage from "../../../static/assets/images/info/delivery.jpg"
+import enjoyImage from "../../../static/assets/images/info/enjoy2.jpg"
 
 class Home extends Component {
     constructor(props) {
@@ -27,9 +28,28 @@ class Home extends Component {
                         backgroundSize: "cover",
                         backgroundPosition: "center"
                     }} />
-                <h1>PetStash Supply Co.</h1>
-                <hr />
-                <h2>SHOP BY CATEGORY</h2>
+                    <div className="home__heading">WHY PET STASH?</div>
+                <div className="home__overview-columns">
+                    <div className="home__overview-column">
+                        <img src={orderImage} className="home__overview-image" />
+                        <div className="home__overview-text">
+                            Order anytime, anywhere, at YOUR convenience.
+                        </div>
+                    </div>
+                    <div className="home__overview-column">
+                        <img src={deliverImage} className="home__overview-image" />
+                        <div className="home__overview-text">
+                            Enjoy low cost shipping and deliveries in under 3 days.
+                        </div>
+                    </div>
+                    <div className="home__overview-column">
+                        <img src={enjoyImage} className="home__overview-image" />
+                        <div className="home__overview-text">
+                            Treat your friends to the quality they deserve.
+                        </div>
+                    </div>
+                </div>
+                <div className="home__heading">SHOP BY CATEGORY</div>
                 <div className="home__categories">
                     <div
                         className="home__category-banner"
@@ -42,7 +62,7 @@ class Home extends Component {
                         }}>
                         <div className="home__category-banner__caption"><p>Not sure where to start?</p></div>
                         <Link to={`/shop/all`} className="home__category-banner__button">
-                            SHOP ALL PRODUCTS
+                            Shop All Products
                             </Link>
                     </div>
 

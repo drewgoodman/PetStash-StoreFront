@@ -31,12 +31,10 @@ class LogoutLink extends Component {
 
   render() {
       return (
-          <div>
-          <a onClick={this.handleSignOut}>
-            <FontAwesomeIcon icon="sign-out-alt" />
-              Logout
+          <a className="header__link" onClick={this.handleSignOut}>
+            <FontAwesomeIcon className="header__link-icon" icon="sign-out-alt" />
+              <div className="header__link-text">LOGOUT</div>
           </a>
-          </div>
       )
   }
 }

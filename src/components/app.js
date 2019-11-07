@@ -28,7 +28,7 @@ import 'aos/dist/aos.css';
 import history from '../history';
 
 
-import wallpaperImg from "../../static/assets/images/banners/wallpaper2.jpg"
+import wallpaperImg from "../../static/assets/images/banners/wallpaper1.jpg"
 
 
 import GithubCorner from 'react-github-corner';

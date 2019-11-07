@@ -12,6 +12,10 @@ export default class Footer extends Component {
         }
     }
 
+    onLinkClick() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <div className="footer">
@@ -27,9 +31,9 @@ export default class Footer extends Component {
                     <div className="footer__links">
                         <div className="footer__heading">Quick Links</div>
                         <div className="footer__links-list">
-                            <NavLink className="footer__link" to="/">Go to Home Page</NavLink>
-                            <NavLink className="footer__link" to="/shop/all">Shop All Products</NavLink>
-                            <NavLink className="footer__link" to="/faq">Frequently Asked Questions</NavLink>
+                            <NavLink onClick={() => onLinkClick} className="footer__link" to="/">Go to Home Page</NavLink>
+                            <NavLink onClick={() => onLinkClick} className="footer__link" to="/shop/all">Shop All Products</NavLink>
+                            <NavLink onClick={() => onLinkClick}  className="footer__link" to="/faq">Frequently Asked Questions</NavLink>
                         </div>
                     </div>
                 </div>

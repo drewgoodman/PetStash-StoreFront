@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import LogoutLink from '../auth/logoutLink'
 
-import storeIcon from "../../../static/assets/images/icon/store-alt.png"
+import storeIcon from "../../../static/assets/images/icon/store-alt2.png"
 
 class Header extends Component {
     constructor(props) {
@@ -30,45 +30,42 @@ class Header extends Component {
                 >
 
                     <div className="header__name">PetStash Supply Co.</div>
-                    <div className="header__tagline"></div>
                 </div>
+
+
                 <div className="header__right">
-                    <NavLink to="/" activeClassName="header-link-active">
-                        Home
-                    </NavLink>
 
                     {this.props.loggedInStatus === "LOGGED_IN" ? (
-                        <div>
-                            <div> 
-                                <LogoutLink handleLogout={this.props.handleLogout} />
-                            </div>
-                            <div>
-                                <div>
-                                    <FontAwesomeIcon icon="user-cog" />
-                                    <NavLink to="/account" activeClassName="header-link-active">
-                                        Your Account
+                        <div className="header__links">
+                                <div className="header__link">
+                                    <FontAwesomeIcon className="header__link-icon"  icon="user-cog" />
+                                    <NavLink to="/account" className="header__link-text" activeClassName="header-link-active">
+                                        ACCOUNT
                                     </NavLink>
                                 </div>
                                 {this.props.cartModalEnabled ? (
-                                    <div>
-                                        <FontAwesomeIcon icon="shopping-cart" />
-                                        <a onClick={this.props.openCartModal}>Your Cart</a>
+                                    <div className="header__link">
+                                        <FontAwesomeIcon className="header__link-icon"  icon="shopping-cart" />
+                                        <a  className="header__link-text" onClick={this.props.openCartModal}>CART</a>
                                     </div>
-                                ) : null}
+                                ) : <div></div>}
+                                <div className="header__link"> 
+                                    <LogoutLink handleLogout={this.props.handleLogout} />
+                                </div>
                             </div>
-                        </div>
                     ) : (
-                            <div>
-                                <div>
-                                    <FontAwesomeIcon icon="user-cog" />
-                                    <NavLink to="/register" activeClassName="header-link-active">
-                                        Register
+                            <div className="header__links">
+                                <div></div>
+                                <div className="header__link">
+                                    <FontAwesomeIcon className="header__link-icon"  icon="user-cog" />
+                                    <NavLink className="header__link-text" to="/register" activeClassName="header-link-active">
+                                        REGISTER
                                     </NavLink>
                                 </div>
-                                <div>
-                                    <FontAwesomeIcon icon="sign-in-alt" />
-                                    <NavLink to="/login" activeClassName="header-link-active">
-                                        Login
+                                <div className="header__link">
+                                    <FontAwesomeIcon className="header__link-icon"  icon="sign-in-alt" />
+                                    <NavLink className="header__link-text" to="/login" activeClassName="header-link-active">
+                                        LOGIN
                                     </NavLink>
                                 </div>
                             </div>
