@@ -44,10 +44,10 @@ body {
 }
 
 .page-container {
-    display: grid;
-    grid-template-columns: 1fr;
     margin-top: 30px;
-    justify-items: center;
+    display: grid;
+    // grid-template-columns: minmax(20px, 250px) [s] 1fr [e] minmax(20px, 250px);
+    grid-template-columns: 1fr [s] minmax(500px, 1000px) [e] 1fr;
 }
 
 // DEFAULT

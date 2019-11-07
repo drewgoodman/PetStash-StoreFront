@@ -1,6 +1,8 @@
 .home {
-    
-    width: $page-width;
+    grid-column: s/e;
+    min-width: 500px;
+    max-width: $page-width;
+    display: grid;
 
     &__main-banner {
         width: 100%;
@@ -10,7 +12,7 @@
     }
 
     &__category-banner {
-        width: 900px;
+        width: 100%;
         height: 200px;
         border-radius: 10px;
         margin-top: 20px;
