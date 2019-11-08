@@ -13,7 +13,8 @@ import {
 import {
     faFacebookSquare,
     faInstagram,
-    faPinterestSquare
+    faPinterestSquare,
+    faTwitterSquare
 } from "@fortawesome/free-brands-svg-icons";
 
 const Icons = () => {
@@ -26,7 +27,8 @@ const Icons = () => {
 
         faFacebookSquare,
         faInstagram,
-        faPinterestSquare
+        faPinterestSquare,
+        faTwitterSquare
     );
 }
 

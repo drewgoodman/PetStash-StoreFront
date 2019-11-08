@@ -13,7 +13,6 @@ class NavBar extends Component {
 
         }
 
-        this.reloadPage = this.reloadPage.bind(this);
     }
 
     // Didn't want to use this, but otherwise the shop category component will not refresh, not enought time to fix by refactoring
@@ -24,7 +23,7 @@ class NavBar extends Component {
     render() {
         return (
             <div className="navbar">
-                <NavLink onClick={()=> this.reloadPage} className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
+                <NavLink onClick={()=> reloadPage} className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
                     <div className="navbar__navlink__icon">
                         <img src={allIcon} />
                     </div>

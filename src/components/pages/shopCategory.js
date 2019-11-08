@@ -39,8 +39,8 @@ export default class ShopCategory extends Component {
     render() {
         return (
             <div className="page-content">
-                <div className="page__heading">Shop {this.state.currentCategory} products:</div>
-                
+                <div className="page__heading">Shop {this.state.currentCategory} products ({this.state.products.length} results found):</div>
+                <div className="page__space30" />
                 <div className="shop__grid">
                 {
                     this.state.products.map(product => {

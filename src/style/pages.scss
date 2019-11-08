@@ -24,9 +24,11 @@
         border-bottom: 2px solid black;
         border-radius: 4px;
         margin-bottom: 20px;
+        @include disable-select;
     }
 
     &__label {
+        @include disable-select;
         font-weight: 700;
         font-size: 1.1em;
     }

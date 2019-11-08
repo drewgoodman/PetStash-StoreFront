@@ -25,6 +25,7 @@ export default class Footer extends Component {
                         <div className="footer__icons">
                             <FontAwesomeIcon className="footer__icon" icon={['fab', 'facebook-square']} fixedWidth />
                             <FontAwesomeIcon className="footer__icon" icon={['fab', 'instagram']} fixedWidth />
+                            <FontAwesomeIcon className="footer__icon" icon={['fab', 'twitter-square']} fixedWidth />
                             <FontAwesomeIcon className="footer__icon" icon={['fab', 'pinterest-square']} fixedWidth />
                         </div>
                     </div>

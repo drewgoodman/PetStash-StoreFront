@@ -53,6 +53,7 @@
         padding: 7px;
         border-radius: 5px;
         @include category-shadow;
+        @include disable-select;
     }
 
     &__category-banner {
@@ -62,6 +63,7 @@
         margin-top: 20px;
         margin-bottom: 40px;
         @include category-shadow;
+        @include disable-select;
 
         &__caption {
             text-decoration: none;
