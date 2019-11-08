@@ -11,7 +11,7 @@
 
     &__columns {
         display: grid;
-        grid-template-columns: minmax(20px, 300px) [s] 1fr [m-s] 1fr [m-e] 1fr [e]  minmax(20px, 300px) ;
+        grid-template-columns: minmax(20px, 300px) [s] 1fr [m-s] 40px [m-e] 1fr [e]  minmax(20px, 300px);
         grid-gap: 20px;
     }
 

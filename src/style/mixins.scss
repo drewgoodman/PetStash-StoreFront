@@ -6,6 +6,12 @@
     box-shadow: 7px 6px 22px -5px rgba(0,0,0,0.47);
 }
 
+@mixin button-shadow {
+    -webkit-box-shadow: 4px 4px 14px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 14px -5px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 14px -5px rgba(0,0,0,0.75);
+}
+
 @mixin disable-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
