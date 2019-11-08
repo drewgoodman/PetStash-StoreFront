@@ -51,7 +51,7 @@ export default class Checkout extends Component {
     }
 
     handleCheckout() {
-        if(this.state.address) {
+        if (this.state.address) {
             let product_list = []
             this.state.cartItems.map(item => {
                 let item_data = {
@@ -74,7 +74,7 @@ export default class Checkout extends Component {
             event.preventDefault();
             console.log(transaction)
             axios.post(
-                "https://petstash-backoffice.herokuapp.com/store/transaction/create", transaction, { withCredentials: true}
+                "https://petstash-backoffice.herokuapp.com/store/transaction/create", transaction, { withCredentials: true }
             ).then(response => {
                 console.log(response.data);
                 this.deleteCart();
@@ -103,7 +103,7 @@ export default class Checkout extends Component {
             this.setState({
                 cartItems: response.data
             })
-            console.log("CartItems",this.state.cartItems)
+            console.log("CartItems", this.state.cartItems)
         }).catch(error => {
             console.log("There was an error in retrieving your cart items", error);
         })
@@ -150,43 +150,61 @@ export default class Checkout extends Component {
     render() {
         return (
             <div className="page-content">
+                <div className="page__heading">Checkout</div>
+                <div className="two-column two-column__gap30">
+                    <div>
+                        <h2>Order Summary</h2>
+                        <div className="page__space30" />
+                        <div className="page__scroll page__light-bg">
+                            {
+                                this.state.cartItems.map(product => {
+                                    return (
+                                        <div className="form__order-summary-item" key={product.cart_item_id}>
+                                            <div className="form__order-summary-title">
+                                                {product.shop_product_name}
+                                            </div>
+                                            <div className="form__order-summary-price">
+                                                ${product.shop_product_price}
+                                            </div>
+                                            <div>
+                                                ( x{product.cart_qty} )
+                                            </div>
 
-                <h1>Checkout</h1>
-                <hr />
-                <h2>Order Summary</h2>
-                {
-                    this.state.cartItems.map(product => {
-                        return (
-                            <div key={product.cart_item_id}>
-                            {product.shop_product_name} | 
-                            ${product.shop_product_price} (x {product.cart_qty})
-                            </div>
-                        )
-                    })
-                }
-
-                <hr />
-                <h2>Shipping Address:</h2>
-                {
-                    this.state.address ? (
-                        <div>
-                            {this.state.address}
-                            {this.state.city}, {this.state.state} {this.state.zipcode}
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
-                    ) : (
-                            <div>No Address Set</div>
-                        )
-                }
-                <a onClick={this.openShippingModal}>Change Shipping Address</a>
-                <hr />
-                {this.state.errorText}
-                <a onClick={this.handleCheckout}>Submit Order</a>
+                    </div>
+                    <div>
+                        <h2>Shipping Address:</h2>
+                        <div className="page__space30" />
+                        {
+                            this.state.address ? (
+                                <div>
+                                    <div>
+                                        {this.state.address}
+                                    </div>
+                                    <div>
+                                        {this.state.city}, {this.state.state} {this.state.zipcode}
+                                    </div>
+                                </div>
+                            ) : (
+                                    <div>No Address Set</div>
+                                )
+                        }
+                        <div className="page__space30" />
+                        <a className="btn" onClick={this.openShippingModal}>Change Shipping Address</a>
+                        {this.state.errorText}
+                    </div>
+                    <a className="btn-submit" onClick={this.handleCheckout}>Submit Order</a>
 
-                <ShippingModal
-                    shippingModalOpen={this.state.shippingModalOpen}
-                    openShippingModal={this.openShippingModal}
-                    closeShippingModal={this.closeShippingModal}
-                />
+                    <ShippingModal
+                        shippingModalOpen={this.state.shippingModalOpen}
+                        openShippingModal={this.openShippingModal}
+                        closeShippingModal={this.closeShippingModal}
+                    />
+                </div>
             </div>
         )
     }

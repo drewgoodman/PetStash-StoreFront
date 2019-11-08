@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 ReactModal.setAppElement(".app-wrapper");
 
@@ -24,7 +26,8 @@ export default class extends Component {
                 right: "auto",
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
-                width: "50vw"
+                width: "400px",
+                minHeight: "400px"
             },
             overlay: {
                 backgroundColor: "rgba(1,1,1,0.75)"
@@ -44,19 +47,19 @@ export default class extends Component {
                 zipcode: this.state.zipcode,
                 state: this.state.state
             }
-    
+
             axios.post(
                 "https://petstash-backoffice.herokuapp.com/store/user/address",
                 user_shipping,
                 { withCredentials: true }
-                ).then(response => {
-                    alert("Shipping Address has been updated!")
-                    this.props.closeShippingModal();
-                    return response;
-    
-                }).catch(error => {
-                    console.log("There was an error updating your shipping", error)
-                })
+            ).then(response => {
+                alert("Shipping Address has been updated!")
+                this.props.closeShippingModal();
+                return response;
+
+            }).catch(error => {
+                console.log("There was an error updating your shipping", error)
+            })
         } else {
             this.setState({
                 errorText: "Zip Code must be exactly 5 characters long"
@@ -82,32 +85,32 @@ export default class extends Component {
                 isOpen={this.props.shippingModalOpen}
                 onAfterOpen={this.getShippingAddress}
             >
-                <h2>Shipping Address:</h2>
+                <FontAwesomeIcon onClick={() => this.props.closeShippingModal()} className="form__close-icon" icon="window-close" />
+                <div className="page__heading">Shipping Address</div>
                 {
                     this.state.errorText === "" ? (
                         <div className="form__flash-filler" />
                     ) : (
-                        <div className="form__flash-msg">{this.state.errorText}</div>
-
-                    )
+                            <div className="form__flash-msg">{this.state.errorText}</div>
+                        )
                 }
 
-                <form onSubmit={this.submitForm}>
-                    <div>
-                        Address
-                  <input type="address" name="address" value={this.state.address} placeholder="Street Address" onChange={this.updateForm} />
+                <form className="form__modal" onSubmit={this.submitForm}>
+                    <div className="form__row">
+                        <div className="form__label">Address</div>
+                  <input className="form__field" type="address" name="address" value={this.state.address} placeholder="Street Address" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        City
-                  <input type="city" name="city" value={this.state.city} placeholder="City" onChange={this.updateForm} />
+                    <div className="form__row">
+                    <div className="form__label">City</div>
+                  <input className="form__field"  type="city" name="city" value={this.state.city} placeholder="City" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Zipcode
-                  <input type="zipcode" name="zipcode" value={this.state.zipcode} placeholder="Zipcode" onChange={this.updateForm} />
+                    <div className="form__row">
+                    <div className="form__label">Zipcode</div>
+                  <input className="form__field"  type="zipcode" name="zipcode" value={this.state.zipcode} placeholder="Zipcode" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        State
-                  <select name="state" value={this.state.state} onChange={this.updateForm}>
+                    <div className="form__row">
+                    <div className="form__label">State</div>
+                  <select className="form__field"  name="state" value={this.state.state} onChange={this.updateForm}>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -161,7 +164,8 @@ export default class extends Component {
                             <option value="WY">Wyoming</option>
                         </select>
                     </div>
-                    <button  className="btn" type="submit">Update Shipping Address</button>
+                    <div className="page__space30" />
+                    <button className="btn" type="submit">Update Shipping Address</button>
 
                 </form>
 

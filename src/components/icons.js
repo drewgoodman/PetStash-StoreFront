@@ -6,7 +6,8 @@ import {
     faUserCog,
     faUserCircle,
     faSignInAlt,
-    faSignOutAlt
+    faSignOutAlt,
+    faWindowClose
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -24,6 +25,7 @@ const Icons = () => {
         faUserCircle,
         faSignInAlt,
         faSignOutAlt,
+        faWindowClose,
 
         faFacebookSquare,
         faInstagram,

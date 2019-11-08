@@ -59,28 +59,35 @@ export default class OrderModal extends Component {
                 isOpen={this.props.orderModalOpen}
                 onAfterOpen={this.fetchTransactionDetails}
             >
-                <h1>Order Details</h1>
-                <hr />
-                <div>
-                    <h3>TRANSACTION DATE:</h3>
-                    <div>{moment(this.state.order.transaction_date).format('MMMM Do YYYY, h:mm a')}</div>
-                    <h3>TOTAL:</h3>
-                    <div>${this.state.order.transaction_cost}</div>
-                    <h3>SHIPPED TO:</h3>
-                    <div>                        
-                    {this.state.order.transaction_address} {this.state.order.transaction_city}, {this.state.order.transaction_state} {this.state.order.transaction_zip}
-                    </div>
-                    <h3>ITEMS IN ORDER:</h3>
+                <div className="page__heading">Order Details</div>
+                <div className="two-column two-column-gap30">
                     <div>
-                        {
-                            this.state.orderItems.map(item => {
-                                return (
-                                    <div key={item.id}>
-                                        {item.shop_product_name} - {item.shop_product_price} (x {item.trans_item_qty})
+                        <h3>ITEMS IN ORDER:</h3>
+                        <div className="page__space30" />
+                        <div className="page__scroll">
+                            {
+                                this.state.orderItems.map(item => {
+                                    return (
+                                        <div key={item.id}>
+                                            {item.shop_product_name} - {item.shop_product_price} (x {item.trans_item_qty})
                                     </div>
-                                )
-                            })
-                        }
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <div className="page__space30" />
+                        <h3>TRANSACTION DATE:</h3>
+                        <div>{moment(this.state.order.transaction_date).format('MMMM Do YYYY, h:mm a')}</div>
+                        <div className="page__space30" />
+                        <h3>TOTAL:</h3>
+                        <div>${this.state.order.transaction_cost}</div>
+                        <div className="page__space30" />
+                        <h3>SHIPPED TO:</h3>
+                        <div>
+                            {this.state.order.transaction_address} {this.state.order.transaction_city}, {this.state.order.transaction_state} {this.state.order.transaction_zip}
+                        </div>
                     </div>
                 </div>
 

@@ -94,6 +94,7 @@ export default class Account extends Component {
             <div className="page-content two-column two-column__gap30">
                 <div>
                     <div className="page__heading">Account Details</div>
+                    <div className="page__space30" />
                     <div className="two-column page__row-gap">
                         <div className="page__label">Name</div>
                         <div>
@@ -135,6 +136,7 @@ export default class Account extends Component {
 
                 <div>
                     <div className="page__heading">Order History</div>
+                    <div className="page__space30" />
                     <div className="page__scroll page__light-bg">
                     {
                         this.state.transactionHistory.map(order => {

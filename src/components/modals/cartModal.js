@@ -3,6 +3,8 @@ import ReactModal from 'react-modal';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import CartProduct from '../cart/cartProduct';
 
 ReactModal.setAppElement(".app-wrapper");
@@ -24,7 +26,8 @@ class CartModal extends Component {
                 right: "auto",
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
-                width: "50vw"
+                width: "600px",
+                minHeight: "400px"
             },
             overlay: {
                 backgroundColor: "rgba(1,1,1,0.75)"
@@ -100,13 +103,16 @@ class CartModal extends Component {
                 isOpen={this.props.cartModalOpen}
                 onAfterOpen={this.fetchCartItems}
             >
-                <h2>Your cart:</h2>
+                <FontAwesomeIcon onClick={()=> this.props.closeCartModal()}className="form__close-icon"  icon="window-close" />
+                <div className="page__heading">Your Cart</div>
+                <div className="page__scroll">
                 {
                     this.state.cartItems.map(product => {
                         return <CartProduct key={product.cart_item_id} product={product} deleteCartItem={this.deleteCartItem} />
                     })
                 }
-                <hr />
+                </div>
+                <div className="page__space30" />
                 {
                     this.state.cartCount > 0 ? (
                         <div>
