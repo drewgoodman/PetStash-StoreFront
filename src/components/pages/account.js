@@ -118,7 +118,7 @@ export default class Account extends Component {
                                 )
                         }
                     </div>
-                    <div className="page__space30" />
+                    <div className="page__space60" />
                     {
                         this.state.user.user_address ? (
                             <div>
@@ -131,7 +131,6 @@ export default class Account extends Component {
                         )
                     }
 
-
                 </div>
 
                 <div>
@@ -141,11 +140,22 @@ export default class Account extends Component {
                     {
                         this.state.transactionHistory.map(order => {
                             return (
-                                <div key={order.transaction_id}>
-                                    <h3>{moment(order.transaction_date).format('MMMM Do YYYY, h:mm a')}</h3>
-                                    ${order.transaction_cost} | {order.transaction_address} {order.transaction_city}, {order.transaction_state} {order.transaction_zip}
-                                    <div>
-                                        <a onClick={() => this.openOrderModal(order)}>View Order Details</a>
+                                <div className="history-item" key={order.transaction_id}>
+                                    <div className="history-item__heading">
+                                        <div className="history-item__date">
+                                            {moment(order.transaction_date).format('MMMM Do YYYY, h:mm a')}
+                                        </div>
+                                        <div className="history-item__price">
+                                            ${order.transaction_cost}
+                                        </div>
+                                    </div>
+                                    <div className="history-item__row">
+                                        <div>
+                                            {order.transaction_address}
+                                        </div>
+                                        <div className="history-item__details" onClick={() => this.openOrderModal(order)}>
+                                            <a>View Order Details</a>
+                                        </div>
                                     </div>
                                 </div>
                             )

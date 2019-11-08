@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import axios from 'axios';
 import moment from 'moment';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 ReactModal.setAppElement(".app-wrapper");
 
@@ -18,7 +19,8 @@ export default class OrderModal extends Component {
                 right: "auto",
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
-                width: "50vw"
+                width: "1000px",
+                minHeight: "400px"
             },
             overlay: {
                 backgroundColor: "rgba(1,1,1,0.75)"
@@ -59,6 +61,7 @@ export default class OrderModal extends Component {
                 isOpen={this.props.orderModalOpen}
                 onAfterOpen={this.fetchTransactionDetails}
             >
+                <FontAwesomeIcon onClick={()=> this.props.closeOrderModal()}className="form__close-icon"  icon="window-close" />
                 <div className="page__heading">Order Details</div>
                 <div className="two-column two-column-gap30">
                     <div>
@@ -68,16 +71,23 @@ export default class OrderModal extends Component {
                             {
                                 this.state.orderItems.map(item => {
                                     return (
-                                        <div key={item.id}>
-                                            {item.shop_product_name} - {item.shop_product_price} (x {item.trans_item_qty})
-                                    </div>
+                                        <div key={item.id} className="form__order-summary-item">
+                                            <div className="form__order-summary-title">
+                                                {item.shop_product_name}
+                                            </div>
+                                            <div className="form__order-summary-price">
+                                                ${item.shop_product_price}
+                                            </div>
+                                            <div>
+                                                ( x{item.trans_item_qty} )
+                                            </div>
+                                        </div>
                                     )
                                 })
                             }
                         </div>
                     </div>
-                    <div>
-                        <div className="page__space30" />
+                    <div className="indent">
                         <h3>TRANSACTION DATE:</h3>
                         <div>{moment(this.state.order.transaction_date).format('MMMM Do YYYY, h:mm a')}</div>
                         <div className="page__space30" />
@@ -86,7 +96,10 @@ export default class OrderModal extends Component {
                         <div className="page__space30" />
                         <h3>SHIPPED TO:</h3>
                         <div>
-                            {this.state.order.transaction_address} {this.state.order.transaction_city}, {this.state.order.transaction_state} {this.state.order.transaction_zip}
+                            {this.state.order.transaction_address} 
+                        </div>
+                         <div>
+                         {this.state.order.transaction_city}, {this.state.order.transaction_state} {this.state.order.transaction_zipcode}
                         </div>
                     </div>
                 </div>
