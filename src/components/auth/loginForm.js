@@ -7,7 +7,7 @@ export default class LoginForm extends Component {
         super(props)
 
         this.state = {
-            errorText: "No error yet",
+            errorText: "",
             username: "",
             password: ""
         }
@@ -24,7 +24,7 @@ export default class LoginForm extends Component {
             password: this.state.password
         }
         axios.post(
-            "https://petstash-backoffice.herokuapp.com/store/login", user_info, {withCredentials: true}
+            "https://petstash-backoffice.herokuapp.com/store/login", user_info, { withCredentials: true }
         ).then(response => {
             console.log(response.data);
             if (response.data.loginStatus) {
@@ -50,19 +50,24 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div>
-                <h2>The form</h2>
-                {this.state.errorText}
-                <hr />
-                <form onSubmit={this.submitForm}>
-                    <div>
-                        Username
-                        <input type="name" name="username" value={this.state.username} placeholder="Username" onChange={this.updateForm} />
+                {
+                    this.state.errorText === "" ? (
+                        <div className="form__flash-filler" />
+                    ) : (
+                            <div className="form__flash-msg">{this.state.errorText}</div>
+
+                        )
+                }
+                <form className="form" onSubmit={this.submitForm}>
+                    <div className="form__row">
+                        <div className="form__label">Username</div>
+                        <input className="form__field" type="name" name="username" value={this.state.username} placeholder="Username" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Password
-                        <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.updateForm} />
+                    <div className="form__row">
+                        <div className="form__label">Password</div>
+                        <input className="form__field" type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.updateForm} />
                     </div>
-                    <button type="submit">Login to Account</button>
+                    <button className="btn" type="submit">Login to Account</button>
                 </form>
             </div>
         )

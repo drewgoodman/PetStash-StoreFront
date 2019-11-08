@@ -1,6 +1,7 @@
 .header {
     height: 70px;
     display: grid;
+    @include disable-select;
 
     background: $header-color;
     border-bottom: 2px solid #5f5f5f;

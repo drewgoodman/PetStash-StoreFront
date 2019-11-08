@@ -54,7 +54,7 @@ body {
     display: grid;
     // grid-template-columns: minmax(20px, 250px) [s] 1fr [e] minmax(20px, 250px);
     grid-template-columns: 1fr [s] minmax(300px, 1000px) [e] 1fr;
-    min-height: 60vh;
+    min-height: calc(100vh - 447px);
 }
 
 .btn {
@@ -81,6 +81,7 @@ body {
 @import "./home";
 @import "./shop";
 @import "./pages";
+@import "./forms";
 
 // NAVIGATION
 @import "./navbar";

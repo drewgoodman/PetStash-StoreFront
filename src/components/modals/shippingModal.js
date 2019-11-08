@@ -83,7 +83,15 @@ export default class extends Component {
                 onAfterOpen={this.getShippingAddress}
             >
                 <h2>Shipping Address:</h2>
-                {this.state.errorText}
+                {
+                    this.state.errorText === "" ? (
+                        <div className="form__flash-filler" />
+                    ) : (
+                        <div className="form__flash-msg">{this.state.errorText}</div>
+
+                    )
+                }
+
                 <form onSubmit={this.submitForm}>
                     <div>
                         Address

@@ -14,7 +14,7 @@ export default class Login extends Component {
   render() {
       return (
           <div className="page-content">
-              <h1>Login</h1>
+          <div className="page__heading">Login to Account</div>
               <LoginForm handleSuccessfulLogin={this.props.handleSuccessfulLogin} />
           </div>
       )

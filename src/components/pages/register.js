@@ -14,7 +14,7 @@ export default class Register extends Component {
   render() {
       return (
           <div className="page-content">
-              <h1>User Registration</h1>
+              <div className="page__heading">Register Account</div>
               <RegisterForm />
           </div>
       )

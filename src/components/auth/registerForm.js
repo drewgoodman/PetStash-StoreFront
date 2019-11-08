@@ -34,7 +34,7 @@ class RegisterForm extends Component {
         } else if (this.state.password.length < 6) {
             this.setState({ errorText: "Password must be at least 6 characters in length." })
         } else if (this.state.password !== this.state.confirm_password) {
-            this.setState({ errorText: "Password must be the same in both fields."})
+            this.setState({ errorText: "Password must be the same in both fields." })
         } else {
             let user_info = {
                 first_name: this.state.first_name,
@@ -68,35 +68,43 @@ class RegisterForm extends Component {
     render() {
         return (
             <div>
-                <h2>The form</h2>
-                {this.state.errorText}
-                <hr />
-                <form onSubmit={this.submitForm}>
-                    <div>
-                        First Name
-                  <input type="name" name="first_name" value={this.state.first_name} placeholder="First name" onChange={this.updateForm} />
+                {
+                    this.state.errorText === "" ? (
+                        <div className="form__flash-filler" />
+                    ) : (
+                            <div className="form__flash-msg">{this.state.errorText}</div>
+
+                        )
+                }
+
+                <form className="form" onSubmit={this.submitForm}>
+                    <div className="form__row">
+                        <div className="form__label">First Name</div>
+                        <input className="form__field" type="name" name="first_name" value={this.state.first_name} placeholder="First name" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Last Name
-                  <input type="name" name="last_name" value={this.state.last_name} placeholder="Last name" onChange={this.updateForm} />
+                    <div className="form__row">
+                        <div className="form__label">Last Name</div>
+                        <input className="form__field" type="name" name="last_name" value={this.state.last_name} placeholder="Last name" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Username
-                  <input type="name" name="username" value={this.state.username} placeholder="Username" onChange={this.updateForm} />
+                    <div className="page__space30" />
+                    <div className="form__row">
+                        <div className="form__label">Username</div>
+                        <input className="form__field" type="name" name="username" value={this.state.username} placeholder="Username" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Email
-                  <input type="email" name="email" value={this.state.email} placeholder="E-mail address" onChange={this.updateForm} />
+                    <div className="form__row">
+                        <div className="form__label">Email</div>
+                        <input className="form__field" type="email" name="email" value={this.state.email} placeholder="E-mail address" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Password
-                  <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.updateForm} />
+                    <div className="page__space30" />
+                    <div className="form__row">
+                        <div className="form__label">Password</div>
+                        <input className="form__field" type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.updateForm} />
                     </div>
-                    <div>
-                        Confirm Password
-                  <input type="password" name="confirm_password" value={this.state.confirm_password} placeholder="Confirm Password" onChange={this.updateForm} />
+                    <div className="form__row">
+                        <div className="form__label">Confirm</div>
+                        <input className="form__field" type="password" name="confirm_password" value={this.state.confirm_password} placeholder="Confirm Password" onChange={this.updateForm} />
                     </div>
-                    <button type="submit">Create Account</button>
+                    <button className="btn" type="submit">Create Account</button>
                 </form>
             </div>
         )
