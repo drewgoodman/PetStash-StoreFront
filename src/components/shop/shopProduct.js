@@ -54,8 +54,8 @@ export default class ShopProduct extends Component {
 
                 </div>
 
-                <div className="shop__product-add">
-                    <a onClick={this.addProductToCart}>Add Product to cart</a>
+                <div onClick={this.addProductToCart} className="shop__product-add">
+                    <a>Add Product to cart</a>
                 </div>
             </div>
         )
