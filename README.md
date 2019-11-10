@@ -2,8 +2,7 @@
 *An eCommerce site for pet supplies. Front end built using React and SCSS. Back end database built in MySQL, API and BackOffice app built in Python, Flask, Jinja, and Bootstrap.*
 
 ## Front End Website
-[https://petstash-supply-co.herokuapp.com/
-https://github.com/drewgoodman/PetStash-StoreFront]
+https://petstash-supply-co.herokuapp.com
 
 - Can create a user account, then add items to a cart, delete them, and proceed to checkout.
 - Shipping address can be added, and all transaction details are stored and can be viewed through the User Account page.
@@ -16,7 +15,6 @@ https://github.com/drewgoodman/PetStash-StoreFront]
 - Navigation components do not yet scale to mobile devices.
 
 ## Back End API
-https://petstash-backoffice.herokuapp.com/
 https://github.com/drewgoodman/PetStash-BackOfficeAPI
 
 - Can create an admin account using employee IDs for additional authentication, then add and edit category and product information.
