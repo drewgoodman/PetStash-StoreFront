@@ -1,11 +1,15 @@
 
 $page-width: 1200px;
 
-// First media query breakpoint -- navbars and footer
+$navbar-color: #2b2b2b;
+$header-color: #fcfcfc;
+
+
+// First media query breakpoint -- navbars
 $media-break1: 1200px;
 
 // Second media query breakpoint -- all columned content
 $media-break2: 1050px;
 
-$navbar-color: #2b2b2b;
-$header-color: #fcfcfc;
+// Third media query breakpoint -- footer
+$media-break3: 780px;

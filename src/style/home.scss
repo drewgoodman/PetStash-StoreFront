@@ -26,9 +26,12 @@
         animation: 0.3s all ease-in-out;
 
         &:hover {
-            background-color: rgba(0,0,0,0.3);
-            color: #f9d9d9;
-            @include category-shadow;
+            @media screen and (min-width: $media-break2) {
+                background-color: rgba(0,0,0,0.3);
+                color: #f9d9d9;
+                @include category-shadow;
+
+            }
         }
     }
 
