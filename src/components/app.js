@@ -189,18 +189,22 @@ export default class extends Component {
             <Loader isLoading={this.state.isLoading}/>
 
             <div className="page-container">
-              <Switch>
-                <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" render={props => (<Login handleSuccessfulLogin={this.handleSuccessfulLogin} />)} />
-
-                {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
-
-                <Route path="/shop/:slug" render={(props) => (<ShopCategory {...props} loggedInStatus={this.state.loggedInStatus}  />)} />
-                <Route exact path="/faq" component={FAQPage} />
-                <Route component={NoMatch} />
-
-              </Switch>
+              {
+                this.state.isLoading ? null : (
+                  <Switch>
+                    <Route exact path="/" render={props => (<Home categories={this.state.categories} />)} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/login" render={props => (<Login handleSuccessfulLogin={this.handleSuccessfulLogin} />)} />
+    
+                    {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
+    
+                    <Route path="/shop/:slug" render={(props) => (<ShopCategory {...props} loggedInStatus={this.state.loggedInStatus}  />)} />
+                    <Route exact path="/faq" component={FAQPage} />
+                    <Route component={NoMatch} />
+    
+                  </Switch>
+                )
+              }
 
             </div>
 

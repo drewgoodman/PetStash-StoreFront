@@ -21,7 +21,6 @@ export default class ShopCategory extends Component {
     getCategoryProducts() {
         let route = this.props.match.params.slug === "all" ? "" : `/${this.props.match.params.slug}`
         if (this.props.loggedInStatus === "LOGGED_IN") {
-            console.log("Logged in!")
             axios.get(
                 `https://petstash-backoffice.herokuapp.com/store/get-products/user${route}`,
                 { withCredentials: true }
@@ -36,8 +35,6 @@ export default class ShopCategory extends Component {
                 this.setState({isLoading:false});
             });
         } else {
-            console.log("Not logged in!")
-            console.log("Look for",route)
             axios.get(
                 `https://petstash-backoffice.herokuapp.com/store/get-products${route}`
             ).then(response => {
@@ -60,12 +57,10 @@ export default class ShopCategory extends Component {
     }
 
     componentDidUpdate() {
-        console.log(this.props.match.params.slug);
         if (this.props.match.params.slug !== this.state.currentCategory) {
             this.setState({isLoading:true});
             this.getCategoryProducts();
             window.scrollTo(0, 0);
-
         }
     }
 
