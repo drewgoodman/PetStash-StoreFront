@@ -50,6 +50,7 @@ export default class ShopProduct extends Component {
         this.setState({
             successfulAdd: false
         })
+        document.getElementById(`add-btn-${this.props.product.id}`).classList.add('shop__product-add-refreshed');
     }
 
     render() {
@@ -77,11 +78,14 @@ export default class ShopProduct extends Component {
                 </div>
                 {
                     this.state.successfulAdd ? (
-                        <div id="add-flash" className="shop__product-added shop__product-add-btn">
+                        <div className="shop__product-added shop__product-add-btn">
                             Added to Cart
                         </div>
                     ) : (
-                        <div onClick={this.addProductToCart} className="shop__product-add shop__product-add-btn shop__product-add-refreshed">
+                        <div
+                            onClick={this.addProductToCart}
+                            id={`add-btn-${this.props.product.id}`}
+                            className="shop__product-add shop__product-add-btn">
                             <a>Add Product to Cart</a>
                         </div>
                     )
