@@ -30,19 +30,19 @@ class Home extends Component {
                     }} />
                     <div className="home__heading">WHY PET STASH?</div>
                 <div className="home__overview-columns">
-                    <div className="home__overview-column">
+                    <div className="home__overview-column" data-aos="fade-up">
                         <img src={orderImage} className="home__overview-image" />
                         <div className="home__overview-text">
                             Order anytime, anywhere, at YOUR convenience.
                         </div>
                     </div>
-                    <div className="home__overview-column">
+                    <div className="home__overview-column" data-aos="fade-up">
                         <img src={deliverImage} className="home__overview-image" />
                         <div className="home__overview-text">
                             Enjoy low cost shipping and deliveries in under 3 days.
                         </div>
                     </div>
-                    <div className="home__overview-column">
+                    <div className="home__overview-column" data-aos="fade-up">
                         <img src={enjoyImage} className="home__overview-image" />
                         <div className="home__overview-text">
                             Treat your friends to the quality they deserve.

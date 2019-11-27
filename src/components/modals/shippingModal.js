@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import axios from 'axios';
 
+import Loader from "../loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -16,7 +17,8 @@ export default class extends Component {
             city: "",
             zipcode: "",
             state: "AL",
-            errorText: ""
+            errorText: "",
+            isLoading: false
         }
 
         this.customStyles = {
@@ -47,17 +49,20 @@ export default class extends Component {
                 zipcode: this.state.zipcode,
                 state: this.state.state
             }
+            this.setState({isLoading: true});
 
             axios.post(
                 "https://petstash-backoffice.herokuapp.com/store/user/address",
                 user_shipping,
                 { withCredentials: true }
             ).then(response => {
+                this.setState({isLoading: false});
                 alert("Shipping Address has been updated!")
                 this.props.closeShippingModal();
                 return response;
 
             }).catch(error => {
+                this.setState({isLoading: false});
                 console.log("There was an error updating your shipping", error)
             })
         } else {
@@ -85,6 +90,7 @@ export default class extends Component {
                 isOpen={this.props.shippingModalOpen}
                 onAfterOpen={this.getShippingAddress}
             >
+                {/* <Loader isLoading={this.state.isLoading}/> */}
                 <FontAwesomeIcon onClick={() => this.props.closeShippingModal()} className="form__close-icon" icon="window-close" />
                 <div className="page__heading">Shipping Address</div>
                 {

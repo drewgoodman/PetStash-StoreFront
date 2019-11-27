@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import history from "../../history";
 
+import Loader from "../loader";
+
+
 export default class LoginForm extends Component {
     constructor(props) {
         super(props)
@@ -9,7 +12,8 @@ export default class LoginForm extends Component {
         this.state = {
             errorText: "",
             username: "",
-            password: ""
+            password: "",
+            isLoading: false
         }
 
         this.submitForm = this.submitForm.bind(this);
@@ -18,15 +22,15 @@ export default class LoginForm extends Component {
 
     submitForm(event) {
         event.preventDefault();
-        console.log("This works")
         let user_info = {
             username: this.state.username,
             password: this.state.password
         }
+        this.setState({isLoading: true});
         axios.post(
             "https://petstash-backoffice.herokuapp.com/store/login", user_info, { withCredentials: true }
         ).then(response => {
-            console.log(response.data);
+            this.setState({isLoading: false});
             if (response.data.loginStatus) {
                 history.push('/')
                 this.props.handleSuccessfulLogin();
@@ -36,6 +40,7 @@ export default class LoginForm extends Component {
                 })
             }
         }).catch(error => {
+            this.setState({isLoading: false});
             console.log("An error occured while trying to login", error);
         })
     }
@@ -50,6 +55,7 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div>
+                <Loader isLoading={this.state.isLoading}/>
                 {
                     this.state.errorText === "" ? (
                         <div className="form__flash-filler" />

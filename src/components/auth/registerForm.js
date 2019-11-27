@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
+import Loader from "../loader";
+
 class RegisterForm extends Component {
     constructor(props) {
         super(props)
@@ -17,7 +19,8 @@ class RegisterForm extends Component {
             address: "",
             city: "",
             state: "",
-            zip: ""
+            zip: "",
+            isLoading: false
         }
 
         this.submitForm = this.submitForm.bind(this);
@@ -36,23 +39,26 @@ class RegisterForm extends Component {
         } else if (this.state.password !== this.state.confirm_password) {
             this.setState({ errorText: "Password must be the same in both fields." })
         } else {
+            this.setState({isLoading: true });
             let user_info = {
                 first_name: this.state.first_name,
                 last_name: this.state.last_name,
                 username: this.state.username,
                 email: this.state.email,
                 password: this.state.password
-            }
+            };
             axios.post(
                 "https://petstash-backoffice.herokuapp.com/store/register-user", user_info
             ).then(response => {
+                this.setState({isLoading: false });
                 if (response.data.registerSuccess) {
                     alert("User successfully registered!");
                     this.props.history.push("/login");
                 } else {
-                    alert(response.data.errorText);
+                    this.setState({ errorText: response.data.errorText });
                 }
             }).catch(error => {
+                this.setState({isLoading: false });
                 console.log("An error has occured with user registration", error);
             })
         }
@@ -68,6 +74,7 @@ class RegisterForm extends Component {
     render() {
         return (
             <div>
+                <Loader isLoading={this.state.isLoading}/>
                 {
                     this.state.errorText === "" ? (
                         <div className="form__flash-filler" />
