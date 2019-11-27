@@ -1,6 +1,24 @@
 
+// First media query breakpoint -- navbars
+
+// @media screen and (max-width: $media-break1) {
+//     .header {
+//         display: none;
+//     }
+
+//     .navbar {
+//         display: none;
+//     }
+// }
+
+
+// Second media query breakpoint -- all columned content
 
 @media screen and (max-width: $media-break2) {
+
+    html {
+        overflow-x: hidden;
+    }
 
     .home {
         &__overview-columns{
@@ -24,9 +42,17 @@
 
     }
 
+    .two-column {
+        grid-template-columns: 1fr;
+        grid-row-gap: 30px;
+        justify-items: center;
+    }
+
+
+
 }
 
-
+// Third media query breakpoint -- footer
 
 @media screen and (max-width: $media-break3) {
 
@@ -57,7 +83,7 @@
         }
 
         &__links-list {
-            grid-row-gap: 10px;
+            grid-row-gap: 15px;
         }
 
         &__copyright {

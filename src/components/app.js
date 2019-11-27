@@ -21,6 +21,7 @@ import FAQPage from './pages/faq';
 
 import NoMatch from './pages/noMatch';
 
+import Loader from "./loader";
 import Icons from './icons'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -59,13 +60,15 @@ export default class extends Component {
 
   handleSuccessfulLogin() {
     this.setState({
-      loggedInStatus: "LOGGED_IN"
+      loggedInStatus: "LOGGED_IN",
+      isLoading: false
     });
   }
 
   handleUnsuccessfulLogin() {
     this.setState({
-      loggedInStatus: "NOT_LOGGED_IN"
+      loggedInStatus: "NOT_LOGGED_IN",
+      isLoading: false
     });
   }
 
@@ -183,6 +186,7 @@ export default class extends Component {
               openCartModal={this.openCartModal}
               closeCartModal={this.closeCartModal}
             />
+            <Loader isLoading={this.state.isLoading}/>
 
             <div className="page-container">
               <Switch>

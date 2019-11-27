@@ -1,0 +1,15 @@
+.content-loader {
+    font-size: 7em;
+    color: #e4e4e4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

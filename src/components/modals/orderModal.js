@@ -64,6 +64,21 @@ export default class OrderModal extends Component {
                 <FontAwesomeIcon onClick={()=> this.props.closeOrderModal()}className="form__close-icon"  icon="window-close" />
                 <div className="page__heading">Order Details</div>
                 <div className="two-column two-column-gap30">
+                    <div className="indent">
+                        <h3>TRANSACTION DATE:</h3>
+                        <div>{moment(this.state.order.transaction_date).format('MMMM Do YYYY, h:mm a')}</div>
+                        <div className="page__space30" />
+                        <h3>TOTAL:</h3>
+                        <div>${this.state.order.transaction_cost}</div>
+                        <div className="page__space30" />
+                        <h3>SHIPPED TO:</h3>
+                        <div>
+                            {this.state.order.transaction_address} 
+                        </div>
+                         <div>
+                         {this.state.order.transaction_city}, {this.state.order.transaction_state} {this.state.order.transaction_zipcode}
+                        </div>
+                    </div>
                     <div>
                         <h3>ITEMS IN ORDER:</h3>
                         <div className="page__space30" />
@@ -85,21 +100,6 @@ export default class OrderModal extends Component {
                                     )
                                 })
                             }
-                        </div>
-                    </div>
-                    <div className="indent">
-                        <h3>TRANSACTION DATE:</h3>
-                        <div>{moment(this.state.order.transaction_date).format('MMMM Do YYYY, h:mm a')}</div>
-                        <div className="page__space30" />
-                        <h3>TOTAL:</h3>
-                        <div>${this.state.order.transaction_cost}</div>
-                        <div className="page__space30" />
-                        <h3>SHIPPED TO:</h3>
-                        <div>
-                            {this.state.order.transaction_address} 
-                        </div>
-                         <div>
-                         {this.state.order.transaction_city}, {this.state.order.transaction_state} {this.state.order.transaction_zipcode}
                         </div>
                     </div>
                 </div>
