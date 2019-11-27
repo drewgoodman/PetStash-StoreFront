@@ -1,6 +1,6 @@
 
 .navbar {
-    height: 100px;
+    height: 80px;
     background-color: $navbar-color;
     color: white;
     display: flex;
@@ -22,16 +22,16 @@ box-shadow: 0px 4px 11px -1px rgba(0,0,0,0.81);
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
-        padding: 10px;
+        padding: 2px;
         width: 110px;
         @include disable-select;
 
         &__icon {
             align-content: center;
             img {
-                height: 40px;
-                width: 40px;
-                padding: 5px;
+                height: 35px;
+                width: 35px;
+                padding: 4px;
             }
         }
 

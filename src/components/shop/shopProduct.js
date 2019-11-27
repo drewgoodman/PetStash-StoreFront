@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Loader from "../loader";
 
 export default class ShopProduct extends Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            isLoading: false,
+            successfulAdd: false
+        }
+
         this.addProductToCart = this.addProductToCart.bind(this);
+        this.resetAddButton = this.resetAddButton.bind(this);
     }
 
 
@@ -15,14 +22,22 @@ export default class ShopProduct extends Component {
                 product_id: this.props.product.id,
                 quantity: 1
             }
+            this.setState({isLoading:true});
             axios.post(
                 "https://petstash-backoffice.herokuapp.com/store/cart-add",
                 productAdded,
                 { withCredentials: true }
             ).then(response => {
-                console.log(response.data);
-                alert(`${this.props.product.shop_product_name} successfully added to your cart!`)
+                this.setState({
+                    isLoading: false,
+                    successfulAdd: true
+                });
+                setTimeout(() => {
+                    this.resetAddButton();
+                }, 1000)
+                // alert(`${this.props.product.shop_product_name} successfully added to your cart!`)
             }).catch(error => {
+                this.setState({isLoading:false});
                 console.log("There was an error updating your cart", error);
             })
 
@@ -31,9 +46,16 @@ export default class ShopProduct extends Component {
         }
     }
 
+    resetAddButton() {
+        this.setState({
+            successfulAdd: false
+        })
+    }
+
     render() {
         return (
             <div className="shop__product-card" data-aos="zoom-in">
+                <Loader isLoading={this.state.isLoading}/>
                 <div className="shop__product-title">
                     {this.props.product.shop_product_name}
 
@@ -53,10 +75,17 @@ export default class ShopProduct extends Component {
                     </div>
 
                 </div>
-
-                <div onClick={this.addProductToCart} className="shop__product-add">
-                    <a>Add Product to cart</a>
-                </div>
+                {
+                    this.state.successfulAdd ? (
+                        <div id="add-flash" className="shop__product-added shop__product-add-btn">
+                            Added to Cart
+                        </div>
+                    ) : (
+                        <div onClick={this.addProductToCart} className="shop__product-add shop__product-add-btn shop__product-add-refreshed">
+                            <a>Add Product to Cart</a>
+                        </div>
+                    )
+                }
             </div>
         )
     }
