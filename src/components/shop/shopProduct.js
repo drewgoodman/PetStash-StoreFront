@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import Loader from "../loader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class ShopProduct extends Component {
     constructor(props) {
@@ -50,8 +52,10 @@ export default class ShopProduct extends Component {
         this.setState({
             successfulAdd: false
         })
-        document.getElementById(`add-btn-${this.props.product.id}`).classList.add('shop__product-add-refreshed');
+        let button = document.getElementById(`add-btn-${this.props.product.id}`)
+        button.classList.add('shop__product-add-refreshed');
     }
+
 
     render() {
         return (
@@ -79,14 +83,16 @@ export default class ShopProduct extends Component {
                 {
                     this.state.successfulAdd ? (
                         <div className="shop__product-added shop__product-add-btn">
-                            Added to Cart
+                            <div className="shop__product-added-text">Added to Cart</div>
+                            <FontAwesomeIcon icon="check-circle" />
                         </div>
                     ) : (
                         <div
                             onClick={this.addProductToCart}
                             id={`add-btn-${this.props.product.id}`}
                             className="shop__product-add shop__product-add-btn">
-                            <a>Add Product to Cart</a>
+                            Add Product to Cart
+                            <FontAwesomeIcon icon="plus-circle" />
                         </div>
                     )
                 }

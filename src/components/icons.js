@@ -9,7 +9,9 @@ import {
     faSignOutAlt,
     faWindowClose,
     faSpinner,
-    faArrowAltCircleUp
+    faArrowAltCircleUp,
+    faCheckCircle,
+    faPlusCircle
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -30,6 +32,8 @@ const Icons = () => {
         faWindowClose,
         faSpinner,
         faArrowAltCircleUp,
+        faCheckCircle,
+        faPlusCircle,
         
         faFacebookSquare,
         faInstagram,

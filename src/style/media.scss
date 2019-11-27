@@ -57,7 +57,7 @@
 @media screen and (max-width: $media-break3) {
 
     body {
-        padding-bottom: 360px;
+        padding-bottom: 390px;
     }
 
     .footer {
@@ -91,5 +91,49 @@
             margin-bottom: 10px;
             font-size: 80%;
         }
+    }
+}
+
+
+// Fourth media query breakpoint -- product cards in shop
+
+@media screen and (max-width: $media-break4) {
+    .shop {
+
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+
+        &__product-image {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        &__product-card {
+            width: 95%;
+        }
+
+        &__product-infos {
+            margin-left: 20px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 0px;
+            
+        }
+
+        &__product-info {
+            width: auto;
+            margin-right: 20px;
+            margin-left: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+        }
+
+        &__product-add-btn {
+            margin-left: 120px;
+            margin-right: 20px;
+            transform: translateY(-42px);
+            margin-bottom: -42px;
+        }
+
     }
 }
