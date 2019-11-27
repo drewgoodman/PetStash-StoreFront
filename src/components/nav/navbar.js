@@ -15,15 +15,11 @@ class NavBar extends Component {
 
     }
 
-    // Didn't want to use this, but otherwise the shop category component will not refresh, not enought time to fix by refactoring
-    reloadPage() {
-        window.location.reload();
-    }
 
     render() {
         return (
             <div className="navbar">
-                <NavLink onClick={()=> reloadPage} className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
+                <NavLink className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
                     <div className="navbar__navlink__icon">
                         <img src={allIcon} />
                     </div>
@@ -36,7 +32,7 @@ class NavBar extends Component {
                         const icon_path = require.context('../../../static/assets/images', true);
                         let icon_url = icon_path('./' + category.icon_url);
                         return (
-                            <NavLink onClick={()=> reloadPage}  key={category.id} className="navbar__navlink" activeClassName="navbar__active" to={`/shop/${category.route}`}>
+                            <NavLink key={category.id} className="navbar__navlink" activeClassName="navbar__active" to={`/shop/${category.route}`}>
                                 <div className="navbar__navlink__icon">
                                     <img src={icon_url} />
                                 </div>
