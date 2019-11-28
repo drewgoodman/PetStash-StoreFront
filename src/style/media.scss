@@ -120,6 +120,16 @@
             background-color: rgba(0,0,0,0.6);
         }
 
+        &__main-banner {
+            border-radius: 0px;
+            height: 300px;
+
+            &__brand {
+                font-size: 10vw;
+                transform: translateY(4vw);
+            }
+        }
+
     }
 
     .two-column {

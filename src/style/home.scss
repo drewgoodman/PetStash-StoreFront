@@ -23,7 +23,7 @@
         }
 
         &__brand {
-            color: white;
+            color: #e1e1e1;
             font-size: 7rem;
             font-family: 'Srisakdi', cursive;
             font-weight: 800;
@@ -43,7 +43,7 @@
             width: 100%;
             position: absolute;
             background: rgb(0,0,0);
-            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4561799719887955) 52%, rgba(0,0,0,0.7959558823529411) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4561799719887955) 40%, rgba(0,0,0,0.7959558823529411) 100%);
         }
     }
 
