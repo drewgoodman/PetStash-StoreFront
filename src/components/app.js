@@ -172,7 +172,7 @@ export default class extends Component {
         <Router history={history}>
           <div>
 
-            <GithubCorner href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
+            <GithubCorner className="media-disable" href="https://github.com/drewgoodman/PetStash-StoreFront" direction='left' />
             <Header
               loggedInStatus={this.state.loggedInStatus}
               handleLogout={this.handleLogout}

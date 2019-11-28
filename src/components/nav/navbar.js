@@ -18,12 +18,12 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div className="navbar">
+            <div className="navbar navbar__dropdown-off">
                 <NavLink className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
                     <div className="navbar__navlink__icon">
                         <img src={allIcon} />
                     </div>
-                    <div>
+                    <div className="navbar__navlink__text">
                         All Products
                     </div>
                 </NavLink>
@@ -36,7 +36,7 @@ class NavBar extends Component {
                                 <div className="navbar__navlink__icon">
                                     <img src={icon_url} />
                                 </div>
-                                <div>
+                                <div className="navbar__navlink__text">
                                     {category.name}
                                 </div>
                             </NavLink>

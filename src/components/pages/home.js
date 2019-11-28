@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router';
 
-import allIcon from "../../../static/assets/images/icon/all.png"
-import storeBanner from "../../../static/assets/images/banners/banner-new.jpg"
-import allBanner from "../../../static/assets/images/banners/banner1.jpg"
-import orderImage from "../../../static/assets/images/info/order.jpg"
-import deliverImage from "../../../static/assets/images/info/delivery.jpg"
-import enjoyImage from "../../../static/assets/images/info/enjoy2.jpg"
+import allIcon from "../../../static/assets/images/icon/all.png";
+import brandIcon from "../../../static/assets/images/icon/store.png";
+import storeBanner from "../../../static/assets/images/banners/banner-new.jpg";
+import allBanner from "../../../static/assets/images/banners/banner1.jpg";
+import orderImage from "../../../static/assets/images/info/order.jpg";
+import deliverImage from "../../../static/assets/images/info/delivery.jpg";
+import enjoyImage from "../../../static/assets/images/info/enjoy2.jpg";
 
 class Home extends Component {
     constructor(props) {
@@ -21,14 +22,22 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
+                <div className="page__space30" />
                 <div
                     className="home__main-banner"
                     style={{
                         background: "url(" + storeBanner + ") no-repeat",
                         backgroundSize: "cover",
                         backgroundPosition: "center"
-                    }} />
-                    <div className="home__heading">WHY PET STASH?</div>
+                    }}>
+                    {/* <img src={brandIcon} className="home__main-banner__icon" /> */}
+                    <div className = "home__main-banner__brand-contrast" />
+                    <div className="home__main-banner__brand">
+                        PetStash Supply Co.
+                    </div>
+                </div>
+                <div className="page__space30" />
+                <div className="home__heading">FOR ALL YOUR PET NEEDS</div>
                 <div className="home__overview-columns">
                     <div className="home__overview-column" data-aos="fade-up">
                         <img src={orderImage} className="home__overview-image" />
