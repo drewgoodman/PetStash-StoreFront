@@ -207,6 +207,7 @@ export default class extends Component {
               categories={this.state.categories}
               handleLogout={this.handleLogout} 
               navbarOpen={this.state.navbarOpen}
+              disableNavbar={this.disableNavbar}
             />
 
             <CartModal

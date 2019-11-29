@@ -28,7 +28,13 @@ class Header extends Component {
         return (
             <div className="header">
                 <div onClick={this.toggleNavbar} className="header__dropdown-btn-wrapper media-enable">
-                    <FontAwesomeIcon className="header__dropdown-btn" icon="bars" />
+                    {
+                        this.props.navbarOpen ? (
+                            <FontAwesomeIcon className="header__dropdown-btn" icon="times" />
+                        ) : (
+                            <FontAwesomeIcon className="header__dropdown-btn" icon="bars" />
+                        )
+                    }
                 </div>
                 <div className="header__brand-wrapper">
                     <NavLink to="/">

@@ -59,7 +59,8 @@ export default class ShopProduct extends Component {
 
     render() {
         return (
-            <div className="shop__product-card" data-aos="zoom-in">
+            // <div className="shop__product-card" data-aos="flip-up">
+            <div className="shop__product-card">
                 <Loader isLoading={this.state.isLoading}/>
                 <div className="shop__product-title">
                     {this.props.product.shop_product_name}

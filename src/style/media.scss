@@ -16,9 +16,17 @@
         display: none;
     }
 
-    .header {
-        grid-template-columns: 10px [dropdown-s] 40px [dropdown-e] 10px [brand-s] 40px [brand-e] 10px [search-s] 1fr [search-e] 10px [links-s] 40px [links-e] 10px;
+    .page-container {
+        padding-top: 80px;
+    }
 
+    .header {
+        grid-template-columns: 10px [dropdown-s] 40px [dropdown-e] 10px [brand-s] 40px [brand-e] 10px [search-s] 1fr [search-e] 15px [links-s] 40px [links-e] 10px;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+
+        @include category-shadow;
         
         &__dropdown-btn-wrapper {
             grid-column: dropdown-s/dropdown-e;
@@ -53,6 +61,10 @@
         height: auto;
         flex-direction: column;
         padding: 0px;
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 67px;
 
         &__dropdown-off {
             display: none;
@@ -78,7 +90,8 @@
             }
 
             &__text {
-                font-size: 1.2em;
+                text-transform: uppercase;
+                font-size: .9em;
                 display: flex;
                 align-items: center;
                 grid-column: link-s/link-e;
@@ -152,6 +165,7 @@
         &__main-banner {
             border-radius: 0px;
             height: 300px;
+            margin-top: -80px;
 
             &__brand {
                 font-size: 10vw;

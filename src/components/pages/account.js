@@ -35,7 +35,6 @@ export default class Account extends Component {
             this.setState({
                 transactionHistory: response.data
             })
-            console.log(this.state.transactionHistory)
         }).catch(error => {
             console.log("There was an error in retrieving your cart items", error);
         })
@@ -50,7 +49,6 @@ export default class Account extends Component {
             this.setState({
                 user: response.data
             })
-            console.log("user found", this.state.user)
         }).catch(error => {
             console.log("Error retrieving user info", error)
         })

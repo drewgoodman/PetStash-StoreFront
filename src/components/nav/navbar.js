@@ -18,6 +18,11 @@ class NavBar extends Component {
 
     }
 
+    componentDidUpdate(newProps) {
+        if (this.props.location.pathname !== newProps.location.pathname) {
+            this.props.disableNavbar();
+        }
+    }
 
     render() {
         return (

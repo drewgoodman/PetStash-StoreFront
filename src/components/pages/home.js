@@ -22,7 +22,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                <div className="page__space30" />
+                <div className="page__space30 media-disable" />
                 <div
                     className="home__main-banner"
                     style={{
