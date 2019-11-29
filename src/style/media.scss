@@ -54,9 +54,9 @@
         flex-direction: column;
         padding: 0px;
 
-        // &__dropdown-off {
-        //     display: none;
-        // }
+        &__dropdown-off {
+            display: none;
+        }
 
         &__navlink {
             width: 100%;

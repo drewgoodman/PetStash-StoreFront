@@ -18,11 +18,10 @@ class NavBar extends Component {
 
     }
 
-    // TODO: Add in Navbar versions of login links
 
     render() {
         return (
-            <div className="navbar navbar__dropdown-off">
+            <div id="navbar" className="navbar navbar__dropdown-off">
             {
                 this.props.loggedInStatus === "LOGGED_IN" ? (
                     <NavLink className="navbar__navlink media-enable" to="/account" activeClassName="navbar__active">
@@ -46,7 +45,7 @@ class NavBar extends Component {
             }
             {
                 this.props.loggedInStatus === "LOGGED_IN" ? (
-                    <LogoutLink className="media-enable" navbarStyle={true} handleLogout={this.props.handleLogout} />
+                    <LogoutLink navbarStyle={true} handleLogout={this.props.handleLogout} />
                 ) : (
                     <NavLink className="navbar__navlink media-enable" to="/login" activeClassName="navbar__active">
                         <div className="navbar__navlink__icon">

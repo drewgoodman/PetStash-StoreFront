@@ -13,15 +13,21 @@ class Header extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
+        this.toggleNavbar = this.toggleNavbar.bind(this);
+    }
 
+    toggleNavbar() {
+        if (this.props.navbarOpen) {
+            this.props.disableNavbar();
+        } else {
+            this.props.enableNavbar();
         }
     }
 
     render() {
         return (
             <div className="header">
-                <div className="header__dropdown-btn-wrapper media-enable">
+                <div onClick={this.toggleNavbar} className="header__dropdown-btn-wrapper media-enable">
                     <FontAwesomeIcon className="header__dropdown-btn" icon="bars" />
                 </div>
                 <div className="header__brand-wrapper">

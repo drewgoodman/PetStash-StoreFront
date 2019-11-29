@@ -44,7 +44,8 @@ export default class extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       categories: [],
       cartModalOpen: false,
-      cartModalEnabled: true
+      cartModalEnabled: true,
+      navbarOpen: false
     }
 
     this.getLoginStatus = this.getLoginStatus.bind(this);
@@ -56,6 +57,9 @@ export default class extends Component {
     this.closeCartModal = this.closeCartModal.bind(this);
     this.enableCartModal = this.enableCartModal.bind(this);
     this.disableCartModal = this.disableCartModal.bind(this);
+
+    this.enableNavbar = this.enableNavbar.bind(this);
+    this.disableNavbar = this.disableNavbar.bind(this);
   }
 
   handleSuccessfulLogin() {
@@ -114,6 +118,22 @@ export default class extends Component {
     this.setState({
       cartModalEnabled: false
     })
+  }
+
+  enableNavbar() {
+    this.setState({
+      navbarOpen: true
+    })
+    let navbar = document.getElementById('navbar');
+    navbar.classList.remove('navbar__dropdown-off');
+  }
+
+  disableNavbar() {
+    this.setState({
+      navbarOpen: false
+    })
+    let navbar = document.getElementById('navbar');
+    navbar.classList.add('navbar__dropdown-off');
   }
 
   componentDidMount() {
@@ -178,11 +198,15 @@ export default class extends Component {
               handleLogout={this.handleLogout}
               openCartModal={this.openCartModal}
               cartModalEnabled={this.state.cartModalEnabled}
+              navbarOpen={this.state.navbarOpen}
+              enableNavbar={this.enableNavbar}
+              disableNavbar={this.disableNavbar}
             />
             <NavBar
               loggedInStatus={this.state.loggedInStatus}
               categories={this.state.categories}
               handleLogout={this.handleLogout} 
+              navbarOpen={this.state.navbarOpen}
             />
 
             <CartModal
