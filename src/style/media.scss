@@ -23,7 +23,7 @@
     .header {
         grid-template-columns: 10px [dropdown-s] 40px [dropdown-e] 10px [brand-s] 40px [brand-e] 10px [search-s] 1fr [search-e] 15px [links-s] 40px [links-e] 10px;
         position: fixed;
-        z-index: 2;
+        z-index: 1;
         top: 0;
 
         @include category-shadow;

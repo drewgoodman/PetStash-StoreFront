@@ -28,11 +28,11 @@ export default class extends Component {
                 right: "auto",
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
-                width: "400px",
-                minHeight: "400px"
+                height: "400px"
             },
             overlay: {
-                backgroundColor: "rgba(1,1,1,0.75)"
+                backgroundColor: "rgba(1,1,1,0.75)",
+                zIndex: 2
             }
         };
 
@@ -42,34 +42,40 @@ export default class extends Component {
 
     submitForm() {
         event.preventDefault();
-        if (this.state.zipcode.length === 5) {
-            let user_shipping = {
-                address: this.state.address,
-                city: this.state.city,
-                zipcode: this.state.zipcode,
-                state: this.state.state
-            }
-            this.setState({isLoading: true});
-
-            axios.post(
-                "https://petstash-backoffice.herokuapp.com/store/user/address",
-                user_shipping,
-                { withCredentials: true }
-            ).then(response => {
-                this.setState({isLoading: false});
-                alert("Shipping Address has been updated!")
-                this.props.closeShippingModal();
-                return response;
-
-            }).catch(error => {
-                this.setState({isLoading: false});
-                console.log("There was an error updating your shipping", error)
-            })
-        } else {
+        if (this.state.zipcode.length !== 5) {
             this.setState({
                 errorText: "Zip Code must be exactly 5 characters long"
-            })
+            });
+            return;
         }
+        if (this.state.address === "" || this.state.city === "") {
+            this.setState({
+                errorText: "Must include a valid address and city"
+            });
+            return;
+        }
+        let user_shipping = {
+            address: this.state.address,
+            city: this.state.city,
+            zipcode: this.state.zipcode,
+            state: this.state.state
+        }
+        this.setState({ isLoading: true });
+
+        axios.post(
+            "https://petstash-backoffice.herokuapp.com/store/user/address",
+            user_shipping,
+            { withCredentials: true }
+        ).then(response => {
+            this.setState({ isLoading: false });
+            alert("Shipping Address has been updated!")
+            this.props.closeShippingModal();
+            return response;
+
+        }).catch(error => {
+            this.setState({ isLoading: false });
+            console.log("There was an error updating your shipping", error)
+        })
 
     }
 
@@ -104,19 +110,19 @@ export default class extends Component {
                 <form className="form__modal" onSubmit={this.submitForm}>
                     <div className="form__row">
                         <div className="form__label">Address</div>
-                  <input className="form__field" type="address" name="address" value={this.state.address} placeholder="Street Address" onChange={this.updateForm} />
+                        <input className="form__field" type="address" name="address" value={this.state.address} placeholder="Street Address" onChange={this.updateForm} />
                     </div>
                     <div className="form__row">
-                    <div className="form__label">City</div>
-                  <input className="form__field"  type="city" name="city" value={this.state.city} placeholder="City" onChange={this.updateForm} />
+                        <div className="form__label">City</div>
+                        <input className="form__field" type="city" name="city" value={this.state.city} placeholder="City" onChange={this.updateForm} />
                     </div>
                     <div className="form__row">
-                    <div className="form__label">Zipcode</div>
-                  <input className="form__field"  type="zipcode" name="zipcode" value={this.state.zipcode} placeholder="Zipcode" onChange={this.updateForm} />
+                        <div className="form__label">Zipcode</div>
+                        <input className="form__field" type="zipcode" name="zipcode" value={this.state.zipcode} placeholder="Zipcode" onChange={this.updateForm} />
                     </div>
                     <div className="form__row">
-                    <div className="form__label">State</div>
-                  <select className="form__field"  name="state" value={this.state.state} onChange={this.updateForm}>
+                        <div className="form__label">State</div>
+                        <select className="form__field" name="state" value={this.state.state} onChange={this.updateForm}>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>

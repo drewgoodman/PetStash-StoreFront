@@ -30,7 +30,8 @@ class CartModal extends Component {
                 minHeight: "400px"
             },
             overlay: {
-                backgroundColor: "rgba(1,1,1,0.75)"
+                backgroundColor: "rgba(1,1,1,0.75)",
+                zIndex: 2
             }
         };
 
