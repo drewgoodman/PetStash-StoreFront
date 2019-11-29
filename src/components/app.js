@@ -179,7 +179,11 @@ export default class extends Component {
               openCartModal={this.openCartModal}
               cartModalEnabled={this.state.cartModalEnabled}
             />
-            <NavBar loggedInStatus={this.state.loggedInStatus} categories={this.state.categories} />
+            <NavBar
+              loggedInStatus={this.state.loggedInStatus}
+              categories={this.state.categories}
+              handleLogout={this.handleLogout} 
+            />
 
             <CartModal
               cartModalOpen={this.state.cartModalOpen}

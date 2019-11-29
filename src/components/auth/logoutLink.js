@@ -33,6 +33,19 @@ class LogoutLink extends Component {
     }
 
     render() {
+        if (this.props.navbarStyle) {
+            return (
+                <div onClick={this.handleSignOut} className="navbar__navlink media-enable">
+                <Loader isLoading={this.state.isLoading} />
+                    <div className="navbar__navlink__icon">
+                        <FontAwesomeIcon icon="sign-out-alt" />
+                    </div>
+                    <div className="navbar__navlink__text">
+                        Sign Out
+                    </div>
+                </div>
+            )
+        }
         return (
             <div>
                 <Loader isLoading={this.state.isLoading} />
@@ -40,7 +53,6 @@ class LogoutLink extends Component {
                     <FontAwesomeIcon className="header__link-icon" icon="sign-out-alt" />
                     <div className="header__link-text">LOGOUT</div>
                 </a>
-
             </div>
         )
     }

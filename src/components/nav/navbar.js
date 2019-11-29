@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
+import LogoutLink from '../auth/logoutLink';
 import allIcon from "../../../static/assets/images/icon/all.png"
 
 class NavBar extends Component {
@@ -20,13 +23,41 @@ class NavBar extends Component {
     render() {
         return (
             <div className="navbar navbar__dropdown-off">
-                {
-                    this.props.loggedInStatus === "LOGGED_IN" ? (
-                        null
-                    ) : (
-                        null
+            {
+                this.props.loggedInStatus === "LOGGED_IN" ? (
+                    <NavLink className="navbar__navlink media-enable" to="/account" activeClassName="navbar__active">
+                        <div className="navbar__navlink__icon">
+                            <FontAwesomeIcon icon="user-cog" />
+                        </div>
+                        <div className="navbar__navlink__text">
+                            View Account
+                        </div>
+                    </NavLink>
+                ) : (
+                    <NavLink className="navbar__navlink media-enable" to="/register" activeClassName="navbar__active">
+                        <div className="navbar__navlink__icon">
+                            <FontAwesomeIcon icon="user-cog" />
+                        </div>
+                        <div className="navbar__navlink__text">
+                            Register
+                        </div>
+                    </NavLink>
                     )
-                }
+            }
+            {
+                this.props.loggedInStatus === "LOGGED_IN" ? (
+                    <LogoutLink className="media-enable" navbarStyle={true} handleLogout={this.props.handleLogout} />
+                ) : (
+                    <NavLink className="navbar__navlink media-enable" to="/login" activeClassName="navbar__active">
+                        <div className="navbar__navlink__icon">
+                            <FontAwesomeIcon icon="sign-in-alt" />
+                        </div>
+                        <div className="navbar__navlink__text">
+                            Sign In
+                        </div>
+                    </NavLink>
+                    )
+            }
                 <NavLink className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
                     <div className="navbar__navlink__icon">
                         <img src={allIcon} />
