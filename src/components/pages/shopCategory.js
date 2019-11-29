@@ -1,53 +1,70 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router';
+
 
 import ShopProduct from '../shop/shopProduct';
 import Loader from "../loader";
 
 
-export default class ShopCategory extends Component {
+class ShopCategory extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             currentCategory: this.props.match.params.slug,
             products: [],
-            isLoading: true
+            isLoading: true,
+            categoryHeading: "Retrieving products...",
+            currentSearchQuery: ""
         }
 
-        this.getCategoryProducts = this.getCategoryProducts.bind(this)
+        this.getCategoryProducts = this.getCategoryProducts.bind(this);
+        this.fillProducts = this.fillProducts.bind(this);
     }
 
     getCategoryProducts() {
-        let route = this.props.match.params.slug === "all" ? "" : `/${this.props.match.params.slug}`
+        this.setState({
+            currentCategory: this.props.match.params.slug,
+            currentSearchQuery: this.props.searchQuery
+        });
+
+        let route = this.props.match.params.slug === "all" || this.props.match.params.slug === "search" ? "" : `/${this.props.match.params.slug}`
         if (this.props.loggedInStatus === "LOGGED_IN") {
             axios.get(
                 `https://petstash-backoffice.herokuapp.com/store/get-products/user${route}`,
                 { withCredentials: true }
             ).then(response => {
-                this.setState({
-                    products: response.data,
-                    isLoading: false
-                })
-                console.log(response.data)
+                this.fillProducts(response.data);
             }).catch(error => {
                 console.log("An error occured retrieving category products", error);
-                this.setState({isLoading:false});
+                this.props.history.push("/nomatch");
             });
         } else {
             axios.get(
                 `https://petstash-backoffice.herokuapp.com/store/get-products${route}`
             ).then(response => {
-                this.setState({
-                    products: response.data,
-                    isLoading: false
-                })
+                this.fillProducts(response.data);
             }).catch(error => {
                 console.log("An error occured retrieving category products", error);
-                this.setState({isLoading:false});
+                this.props.history.push("/nomatch");
             });
         }
-        this.setState({currentCategory: this.props.match.params.slug});
+    }
+
+    fillProducts(productData) {
+        this.setState({
+            isLoading: false
+        })
+        if (this.state.currentCategory === "search" && this.state.currentSearchQuery !== "") {
+            console.log("Time to look!",this.props.searchQuery);
+            // TODO: Filter products here based on search function
+        } else {
+            this.setState({
+                products: productData,
+                categoryHeading: this.props.match.params.slug === "all" || this.props.match.params.slug === "search" ? "Shop all products" : `Shop ${this.props.match.params.slug} products.`
+            })
+        }
     }
 
 
@@ -57,7 +74,7 @@ export default class ShopCategory extends Component {
     }
 
     componentDidUpdate() {
-        if (this.props.match.params.slug !== this.state.currentCategory) {
+        if (this.props.match.params.slug !== this.state.currentCategory || (this.state.currentCategory === "search" && this.state.currentSearchQuery !== this.props.searchQuery)) {
             this.setState({isLoading:true});
             this.getCategoryProducts();
             window.scrollTo(0, 0);
@@ -69,7 +86,7 @@ export default class ShopCategory extends Component {
         return (
             <div className="page-content">
                 <Loader isLoading={this.state.isLoading}/>
-                <div className="page__heading">Shop {this.state.currentCategory} products ({this.state.products.length} results found):</div>
+                <div className="page__heading">{this.state.categoryHeading} ({this.state.products.length} results found):</div>
                 <div className="page__space30" />
                 <div className="shop__grid">
                 {
@@ -85,3 +102,5 @@ export default class ShopCategory extends Component {
         )
     }
 }
+
+export default withRouter(ShopCategory);

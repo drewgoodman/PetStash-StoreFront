@@ -48,7 +48,7 @@ class Header extends Component {
                 </div>
 
                 <div className="header__searchbar">
-                    <SearchBar />
+                    <SearchBar handleSearchQuery={this.props.handleSearchQuery} />
                 </div>
 
                 <div className="header__links-wrapper">

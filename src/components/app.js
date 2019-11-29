@@ -43,10 +43,13 @@ export default class extends Component {
       isLoading: true,
       loggedInStatus: "NOT_LOGGED_IN",
       categories: [],
+      searchQuery: "",
       cartModalOpen: false,
       cartModalEnabled: true,
       navbarOpen: false
     }
+
+    this.handleSearchQuery = this.handleSearchQuery.bind(this);
 
     this.getLoginStatus = this.getLoginStatus.bind(this);
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -136,6 +139,12 @@ export default class extends Component {
     navbar.classList.add('navbar__dropdown-off');
   }
 
+  handleSearchQuery(newQuery) {
+    this.setState({
+      searchQuery: newQuery
+    });
+  }
+
   componentDidMount() {
 
     this.getLoginStatus();
@@ -201,6 +210,7 @@ export default class extends Component {
               navbarOpen={this.state.navbarOpen}
               enableNavbar={this.enableNavbar}
               disableNavbar={this.disableNavbar}
+              handleSearchQuery={this.handleSearchQuery}
             />
             <NavBar
               loggedInStatus={this.state.loggedInStatus}
@@ -227,7 +237,7 @@ export default class extends Component {
     
                     {this.state.loggedInStatus === 'LOGGED_IN' ? this.authorizedPages() : null}
     
-                    <Route path="/shop/:slug" render={(props) => (<ShopCategory {...props} loggedInStatus={this.state.loggedInStatus}  />)} />
+                    <Route path="/shop/:slug" render={(props) => (<ShopCategory {...props} searchQuery={this.state.searchQuery} loggedInStatus={this.state.loggedInStatus}  />)} />
                     <Route exact path="/faq" component={FAQPage} />
                     <Route component={NoMatch} />
     

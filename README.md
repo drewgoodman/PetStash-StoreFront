@@ -12,7 +12,8 @@ https://petstash-supply-co.herokuapp.com
 ### Known Issues
 - Image URLs for category icons and banners in the database point to hardcoded images inside the React app. The project is hosted on a free account using Heroku's ClearDB add-on, which has a maximum database size of 5MB.
 - No payment info utilized nor included in the mock-up forms.
-- Navigation components do not yet scale to mobile devices.
+- Mobile device support is still a work in progress - navbars are now implemented, but modals and forms do not currently scale properly.
+- Search bar is currently non-functional and merely for design.
 
 ## Back End API
 https://github.com/drewgoodman/PetStash-BackOfficeAPI
