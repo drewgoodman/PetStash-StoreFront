@@ -17,7 +17,6 @@
             width: 150px;
             position: absolute;
             transform: translateX(-20px) translateY(60px);
-            z-index: 4;
             background: rgba(0,0,0,0.6);
             border-radius: 10px;
         }
@@ -35,7 +34,7 @@
             // background: rgba(0,0,0,0.3);
             transform: translateY(35px);
             @include disable-select;
-            z-index: 3;
+            // z-index: 1;
         }
 
         &__brand-contrast {

@@ -12,7 +12,9 @@ import {
     faArrowAltCircleUp,
     faCheckCircle,
     faPlusCircle,
-    faSearch
+    faSearch,
+    faTimes,
+    faBars
 
 } from "@fortawesome/free-solid-svg-icons"
 
@@ -36,6 +38,8 @@ const Icons = () => {
         faCheckCircle,
         faPlusCircle,
         faSearch,
+        faTimes,
+        faBars,
         
         faFacebookSquare,
         faInstagram,

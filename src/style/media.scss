@@ -1,10 +1,14 @@
 
 
-.media-enable {
-    display: none;
+@media screen and (min-width: $media-break1 + 1) {
+    .media-enable {
+        display: none;
+    }
 }
 
-// First media query breakpoint -- navbars
+
+
+// First media query breakpoint -- enable mobile navbars
 
 @media screen and (max-width: $media-break1) {
 
@@ -12,12 +16,37 @@
         display: none;
     }
 
-    .media-enable {
-        display: contents;
-    }
-
     .header {
+        grid-template-columns: 10px [dropdown-s] 40px [dropdown-e] 10px [brand-s] 40px [brand-e] 10px [search-s] 1fr [search-e] 10px [links-s] 40px [links-e] 10px;
+
         
+        &__dropdown-btn-wrapper {
+            grid-column: dropdown-s/dropdown-e;
+            border: 2px solid #666;
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        &__dropdown-btn {
+            color: #333;
+            font-size: 25px;
+        }
+
+        &__icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        &__link-icon {
+            font-size: 28px;
+        }
+
+        &__links {
+            align-items: center;
+            padding-bottom: 5px;
+        }
     }
 
     .navbar {

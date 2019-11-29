@@ -21,6 +21,9 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
+                <div className="header__dropdown-btn-wrapper media-enable">
+                    <FontAwesomeIcon className="header__dropdown-btn" icon="bars" />
+                </div>
                 <div className="header__brand-wrapper">
                     <NavLink to="/">
                         <img className="header__icon" src={storeIcon} />
@@ -40,7 +43,7 @@ class Header extends Component {
 
                     {this.props.loggedInStatus === "LOGGED_IN" ? (
                         <div className="header__links">
-                            <div className="header__link">
+                            <div className="header__link media-disable">
                                 <FontAwesomeIcon className="header__link-icon" icon="user-cog" />
                                 <NavLink to="/account" className="header__link-text" activeClassName="header-link-active">
                                     ACCOUNT
@@ -48,29 +51,32 @@ class Header extends Component {
                             </div>
                             {this.props.cartModalEnabled ? (
                                 <div className="header__link">
-                                    <FontAwesomeIcon className="header__link-icon" icon="shopping-cart" />
-                                    <a className="header__link-text" onClick={this.props.openCartModal}>CART</a>
+                                    <FontAwesomeIcon onClick={this.props.openCartModal} className="header__link-icon" icon="shopping-cart" />
+                                    <a className="header__link-text media-disable" onClick={this.props.openCartModal}>CART</a>
                                 </div>
                             ) : (
                                 <div className="header__link header__link__disabled">
                                     <FontAwesomeIcon className="header__link-icon" icon="shopping-cart" />
-                                    <a>CART</a>
+                                    <a className="media-disable">CART</a>
                                 </div>
                             )}
-                            <div className="header__link">
+                            <div className="header__link media-disable">
                                 <LogoutLink handleLogout={this.props.handleLogout} />
                             </div>
                         </div>
                     ) : (
                             <div className="header__links">
-                                <div></div>
-                                <div className="header__link">
+                                <div className="header__link media-disable">
                                     <FontAwesomeIcon className="header__link-icon" icon="user-cog" />
                                     <NavLink className="header__link-text" to="/register" activeClassName="header-link-active">
                                         REGISTER
                                     </NavLink>
                                 </div>
-                                <div className="header__link">
+                                <div className="header__link header__link__disabled">
+                                    <FontAwesomeIcon className="header__link-icon" icon="shopping-cart" />
+                                    <a className="media-disable">CART</a>
+                                </div>
+                                <div className="header__link media-disable">
                                     <FontAwesomeIcon className="header__link-icon" icon="sign-in-alt" />
                                     <NavLink className="header__link-text" to="/login" activeClassName="header-link-active">
                                         LOGIN

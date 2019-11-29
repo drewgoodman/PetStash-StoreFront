@@ -15,10 +15,18 @@ class NavBar extends Component {
 
     }
 
+    // TODO: Add in Navbar versions of login links
 
     render() {
         return (
             <div className="navbar navbar__dropdown-off">
+                {
+                    this.props.loggedInStatus === "LOGGED_IN" ? (
+                        null
+                    ) : (
+                        null
+                    )
+                }
                 <NavLink className="navbar__navlink" to="/shop/all" activeClassName="navbar__active">
                     <div className="navbar__navlink__icon">
                         <img src={allIcon} />

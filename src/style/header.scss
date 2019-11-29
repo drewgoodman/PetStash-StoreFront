@@ -24,7 +24,9 @@
         justify-content: center;
     }
 
+
     &__searchbar {
+        grid-column: search-s/search-e;
 
         &__grid {
             display: grid;
