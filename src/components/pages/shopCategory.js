@@ -57,8 +57,19 @@ class ShopCategory extends Component {
             isLoading: false
         })
         if (this.state.currentCategory === "search" && this.state.currentSearchQuery !== "") {
-            console.log("Time to look!",this.props.searchQuery);
-            // TODO: Filter products here based on search function
+            let filteredProducts = [];
+            let searchQuery = this.props.searchQuery.toLowerCase().trim()
+            productData.map(product => {
+                if(product.shop_product_name.toLowerCase().includes(searchQuery) ||
+                    product.shop_product_brand.toLowerCase().includes(searchQuery) ||
+                    product.shop_product_description.toLowerCase().includes(searchQuery)) {
+                    filteredProducts.push(product);
+                }
+            })
+            this.setState({
+                categoryHeading: `Search results for "${searchQuery}"`,
+                products: filteredProducts
+            });
         } else {
             this.setState({
                 products: productData,
