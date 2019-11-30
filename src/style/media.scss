@@ -250,6 +250,7 @@
     .home {
         &__overview-columns{
             grid-template-columns: 1fr;
+            margin-bottom: 0;
         }
 
         &__overview-image {

@@ -69,6 +69,7 @@ class Home extends Component {
                             backgroundPosition: "center"
 
                         }}>
+                        <div className="home__category-banner__contrast media-disable" />
                         <div className="home__category-banner__caption"><p>Not sure where to start?</p></div>
                         <Link to={`/shop/all`} className="home__category-banner__button">
                             Shop All Products
@@ -90,6 +91,7 @@ class Home extends Component {
                                         backgroundPosition: "center"
 
                                     }}>
+                                    <div className="home__category-banner__contrast media-disable" />
                                     <div className="home__category-banner__caption"><p>{category.banner_caption}</p></div>
                                     <Link to={`/shop/${category.route}`} className="home__category-banner__button">
                                         {category.banner_button}

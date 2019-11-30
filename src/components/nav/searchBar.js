@@ -13,6 +13,7 @@ class SearchBar extends Component {
     event.preventDefault();
     const searchInput = document.getElementById("SearchBarInput")
     if(searchInput.value !== "") {
+        searchInput.blur();
         let newQuery = searchInput.value;
         this.props.handleSearchQuery(newQuery);
         searchInput.value = "";

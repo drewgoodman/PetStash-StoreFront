@@ -4,6 +4,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loader from "../loader";
 
 import CartProduct from '../cart/cartProduct';
 
@@ -16,7 +17,8 @@ class CartModal extends Component {
         this.state = {
             cartItems: [],
             cartCount: 0,
-            cartTotal: 0
+            cartTotal: 0,
+            isLoading: true
         }
 
         this.customStyles = {
@@ -47,38 +49,42 @@ class CartModal extends Component {
             { withCredentials: true }
         ).then(response => {
             this.setState({
+                isLoading: false,
                 cartItems: response.data,
                 cartCount: response.data.length
             })
-            console.log(this.state.cartItems)
+            // console.log(this.state.cartItems)
         }).catch(error => {
             console.log("There was an error in retrieving your cart items", error);
+            this.setState({isLoading: false});
         })
     }
 
     deleteCart() {
+        this.setState({isLoading:true});
         axios.delete(
             "https://petstash-backoffice.herokuapp.com/store/cart-delete-all",
             { withCredentials: true }
         ).then(response => {
-            alert("Cart deleted.")
             this.setState({
+                isLoading: false,
                 cartItems: [],
                 cartCount: 0
             })
         }).catch(error => {
             console.log("There was an error in retrieving your cart items", error);
+            this.setState({isLoading: false});
         })
     }
 
     deleteCartItem(product) {
-        console.log(product.product_id)
+        this.setState({isLoading:true});
         axios.delete(
             `https://petstash-backoffice.herokuapp.com/store/cart-delete/${product.product_id}`,
             { withCredentials: true }
         ).then(response => {
-            alert("Cart item deleted.")
             this.setState({
+                isLoading: false,
                 cartCount: this.state.cartCount - 1,
                 cartItems: this.state.cartItems.filter(item => {
                     return item.cart_item_id !== product.cart_item_id;
@@ -86,6 +92,7 @@ class CartModal extends Component {
             })
         }).catch(error => {
             console.log("There was an error in retrieving your cart items", error);
+            this.setState({isLoading: false});
         })
     }
 
@@ -104,13 +111,19 @@ class CartModal extends Component {
                 isOpen={this.props.cartModalOpen}
                 onAfterOpen={this.fetchCartItems}
             >
+                <Loader isLoading={this.state.isLoading} />
                 <FontAwesomeIcon onClick={()=> this.props.closeCartModal()}className="form__close-icon"  icon="window-close" />
                 <div className="page__heading">Your Cart</div>
                 <div className="page__scroll">
+                
                 {
+                    this.state.cartItems.length > 0 ? (
                     this.state.cartItems.map(product => {
                         return <CartProduct key={product.cart_item_id} product={product} deleteCartItem={this.deleteCartItem} />
                     })
+                    ) : (
+                        <div>No items in your cart.</div>
+                    )
                 }
                 </div>
                 <div className="page__space30" />
