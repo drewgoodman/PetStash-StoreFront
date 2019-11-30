@@ -40,6 +40,7 @@
             font-size: 18px;
             align-self: center;
             z-index: 100;
+            cursor: pointer;
         }
 
         &__input {
@@ -80,10 +81,18 @@
         &__disabled {
             color: #d4d4d4;
         }
+
+        &:hover {
+            .header__link-text {
+                border-bottom: 2px solid black;
+
+            }
+        }
     }
 
     &__link-icon {
         font-size: 1.3em;
+        cursor: pointer;
     }
 
     &__link-text {
@@ -93,10 +102,6 @@
         border-bottom: 2px solid transparent;
         border-radius: 4px;
         cursor: pointer;
-
-        &:hover {
-            border-bottom: 2px solid black;
-        }
     }
 
 
@@ -112,4 +117,5 @@
     grid-column: logo-s/logo-e;
     text-decoration: none;
     color: #333;
+    text-shadow: 2px 1px 2px #474747;
 }

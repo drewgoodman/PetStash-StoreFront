@@ -121,6 +121,19 @@
         }
     }
 
+    .home {
+        &__main-banner {
+            border-radius: 0px;
+            height: 300px;
+            margin-top: -80px;
+
+            &__brand {
+                font-size: 10vw;
+                transform: translateY(4vw);
+            }
+        }
+    }
+
 }
 
 
@@ -133,47 +146,7 @@
         overflow-x: hidden;
     }
 
-    .home {
-        &__overview-columns{
-            grid-template-columns: 1fr;
-        }
 
-        &__overview-image {
-            width: 70%;
-        }
-
-        &__overview-text {
-            font-size: 150%;
-            width: 90%;
-        
-            background: rgba(0,0,0,0.3);
-            padding: 10px;
-            margin: 5px;
-            color: white;
-            border-radius: 5px;
-            @include category-shadow;
-            position: fixed;
-            transform: translateY(200px);
-
-        }
-
-        &__heading {
-            border-radius: 0px;
-            background-color: rgba(0,0,0,0.6);
-        }
-
-        &__main-banner {
-            border-radius: 0px;
-            height: 300px;
-            margin-top: -80px;
-
-            &__brand {
-                font-size: 10vw;
-                transform: translateY(4vw);
-            }
-        }
-
-    }
 
     .two-column {
         grid-template-columns: 1fr;
@@ -266,6 +239,84 @@
             margin-right: 20px;
             transform: translateY(-42px);
             margin-bottom: -42px;
+        }
+
+    }
+}
+
+// Fifth media breakpoint -- overview bubbles on home page 
+
+@media screen and (max-width: $media-break5) {
+    .home {
+        &__overview-columns{
+            grid-template-columns: 1fr;
+        }
+
+        &__overview-image {
+            width: 70%;
+        }
+
+        &__overview-text {
+            font-size: 150%;
+            width: 90%;
+        
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            margin: 5px;
+            color: white;
+            border-radius: 5px;
+            @include category-shadow;
+
+        }
+
+        &__heading {
+            border-radius: 0px;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+    }
+}
+
+
+// Sixth media query breakpoint -- home page headings
+@media screen and (max-width: $media-break6) {
+    .home {
+        &__heading {
+            font-size: 6vw;
+        }
+    }
+}
+
+@media screen and (max-width: $media-break-min) {
+    .home {
+
+
+        &__overview-columns {
+            grid-row-gap: 0;
+        }
+        &__overview-image {
+            width: 70%;
+            margin: 0;
+        }
+
+
+        &__overview-text {
+            font-size: 1em;
+            width: 90%;
+        
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            margin: 5px;
+            color: white;
+            border-radius: 5px;
+            @include category-shadow;
+            transform: translateY(-50px);
+
+        }
+
+        &__heading {
+            border-radius: 0px;
+            background-color: rgba(0,0,0,0.6);
         }
 
     }

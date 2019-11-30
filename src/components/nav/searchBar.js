@@ -24,7 +24,7 @@ class SearchBar extends Component {
       return (
           <form onSubmit={this.submitSearchQuery}>
               <div className="header__searchbar__grid">
-                  <FontAwesomeIcon className="header__searchbar__icon" icon="search" />
+                  <FontAwesomeIcon onClick={this.submitSearchQuery} className="header__searchbar__icon" icon="search" />
                   <input id="SearchBarInput" className="header__searchbar__input" type="text" placeholder="Search" />
               </div>
           </form>
