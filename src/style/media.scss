@@ -58,8 +58,11 @@
     }
 
     .navbar {
-        height: auto;
+        height: calc(100vh - 67px);
         flex-direction: column;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        justify-content: flex-start;
         padding: 0px;
         position: fixed;
         z-index: 1;
@@ -71,6 +74,7 @@
         }
 
         &__navlink {
+            height: 54px;
             width: 100%;
             border-radius: 0px;            
             border-bottom: 2px solid #666;
@@ -130,6 +134,20 @@
             &__brand {
                 font-size: 10vw;
                 transform: translateY(4vw);
+            }
+        }
+
+        &__category-banner {            
+            &__button {
+                color: white;
+                border: 2px solid rgba(0,0,0,.2);
+                background-color: rgba(0,0,0,0.6);
+
+                &:hover {
+                    border: 2px solid rgba(0,0,0,.1);
+                    background-color: rgba(255,255,255,0.6);
+                    color: black;
+                }
             }
         }
     }

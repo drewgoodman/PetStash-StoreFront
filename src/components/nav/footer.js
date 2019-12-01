@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SocialLinks from './socialLinks';
 
 export default class Footer extends Component {
     constructor(props) {
@@ -20,15 +20,7 @@ export default class Footer extends Component {
         return (
             <div className="footer">
                 <div className="footer__columns">
-                    <div className="footer__social">
-                        <div className="footer__heading">Follow Us</div>
-                        <div className="footer__icons">
-                            <FontAwesomeIcon className="footer__icon" icon={['fab', 'facebook-square']} fixedWidth />
-                            <FontAwesomeIcon className="footer__icon" icon={['fab', 'instagram']} fixedWidth />
-                            <FontAwesomeIcon className="footer__icon" icon={['fab', 'twitter-square']} fixedWidth />
-                            <FontAwesomeIcon className="footer__icon" icon={['fab', 'pinterest-square']} fixedWidth />
-                        </div>
-                    </div>
+                    <SocialLinks />
                     <div className="footer__links">
                         <div className="footer__heading">Quick Links</div>
                         <div className="footer__links-list">

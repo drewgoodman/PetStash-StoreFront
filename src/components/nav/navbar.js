@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
+import SocialLinks from './socialLinks';
 import LogoutLink from '../auth/logoutLink';
 import allIcon from "../../../static/assets/images/icon/all.png"
 
@@ -86,6 +86,12 @@ class NavBar extends Component {
                         )
                     })
                 }
+                <SocialLinks />
+                <div className="footer__copyright">
+                    <p>&copy; 2019 Drew Goodman &#124; All rights reserved</p>
+                </div>
+                <div className="space-60" />
+                
             </div>
         )
     }
