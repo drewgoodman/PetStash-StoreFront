@@ -54,6 +54,13 @@
         border-radius: 5px;
     }
 
+    &__bg-white {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        @include category-shadow;
+    }
+
     &__scroll {
         height: 30vh;
         overflow-y: scroll;

@@ -3,16 +3,10 @@
     display: grid;
     @include disable-select;
 
+
+
     background: $header-color;
     border-bottom: 2px solid #5f5f5f;
-    // background: rgba(255,255,255,0);
-    // background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    // background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(33%, rgba(255,255,255,0.59)), color-stop(47%, rgba(255,255,255,0.76)), color-stop(67%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
-    // background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    // background: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    // background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    // background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.59) 33%, rgba(255,255,255,0.76) 47%, rgba(255,255,255,1) 67%, rgba(255,255,255,1) 100%);
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
     padding-top: 5px;
     grid-template-columns: 60px [brand-s] 80px [brand-e logo-s] 1fr [logo-e search-s] 2fr [search-e] 10px [links-s] 2fr [links-e] 15px;
     width: 100%;

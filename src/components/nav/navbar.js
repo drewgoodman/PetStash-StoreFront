@@ -86,11 +86,12 @@ class NavBar extends Component {
                         )
                     })
                 }
-                <SocialLinks />
-                <div className="footer__copyright">
+                <div className="page__space30 media-enable" />
+                <SocialLinks className="media-enable" />
+                <div className="page__space30 media-enable" />
+                <div className="footer__copyright media-enable">
                     <p>&copy; 2019 Drew Goodman &#124; All rights reserved</p>
                 </div>
-                <div className="space-60" />
                 
             </div>
         )

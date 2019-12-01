@@ -28,8 +28,8 @@ class CartModal extends Component {
                 right: "auto",
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
-                width: "600px",
-                minHeight: "400px"
+                maxWidth: "600px",
+                minHeight: "430px"
             },
             overlay: {
                 backgroundColor: "rgba(1,1,1,0.75)",
@@ -114,7 +114,7 @@ class CartModal extends Component {
                 <Loader isLoading={this.state.isLoading} />
                 <FontAwesomeIcon onClick={()=> this.props.closeCartModal()}className="form__close-icon"  icon="window-close" />
                 <div className="page__heading">Your Cart</div>
-                <div className="page__scroll">
+                <div className="page__scroll page__scroll-mediabreak">
                 
                 {
                     this.state.cartItems.length > 0 ? (
@@ -126,10 +126,9 @@ class CartModal extends Component {
                     )
                 }
                 </div>
-                <div className="page__space30" />
                 {
                     this.state.cartCount > 0 ? (
-                        <div>
+                        <div className="two-column-btn">
                             <a className="btn" onClick={this.handleCheckoutClick}>Proceed to Checkout</a>
                             <a className="btn" onClick={this.deleteCart}>Clear Cart</a>
                         </div>

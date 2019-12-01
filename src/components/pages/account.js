@@ -93,7 +93,7 @@ export default class Account extends Component {
                 <div>
                     <div className="page__heading">Account Details</div>
                     <div className="page__space30" />
-                    <div className="two-column page__row-gap">
+                    <div className="two-column page__row-gap page__bg-white">
                         <div className="page__label">Name</div>
                         <div>
                             {this.state.user.user_first_name} {this.state.user.user_last_name}

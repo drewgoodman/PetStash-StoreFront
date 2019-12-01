@@ -19,7 +19,7 @@ export default class OrderModal extends Component {
                 right: "auto",
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
-                width: "1000px",
+                maxWidth: "1000px",
                 minHeight: "400px"
             },
             overlay: {

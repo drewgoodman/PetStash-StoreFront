@@ -58,7 +58,7 @@
     }
 
     .navbar {
-        height: calc(100vh - 67px);
+        min-height: calc(100vh - 67px);
         flex-direction: column;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -304,6 +304,27 @@
             font-size: 6vw;
         }
     }
+
+    .page__scroll-mediabreak {
+        // height: 300px;
+    }
+
+    .form {
+        &__cart-item {
+            grid-template-columns: 1fr 50px 40px 60px;
+            font-size: 10px;
+            &__delete {
+            }
+        }
+        
+    }
+
+    .two-column-btn {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: auto;
+    }
+
 }
 
 @media screen and (max-width: $media-break-min) {
@@ -338,5 +359,9 @@
             background-color: rgba(0,0,0,0.6);
         }
 
+
+
     }
+
+
 }
