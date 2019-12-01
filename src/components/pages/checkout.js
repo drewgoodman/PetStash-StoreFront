@@ -148,10 +148,39 @@ export default class Checkout extends Component {
 
 
     render() {
+        let itemTotal = 0;
+        let totalItemQty = 0;
+        this.state.cartItems.map(product => {
+            totalItemQty += product.cart_qty
+            itemTotal += product.shop_product_price * product.cart_qty
+        })
+        const shipping = 5.99;
+        const orderTotal = itemTotal + shipping;
         return (
             <div className="page-content">
                 <div className="page__heading">Checkout</div>
                 <div className="two-column two-column__gap30">
+                    <div>
+                        <h2>Shipping Address:</h2>
+                        <div className="page__space30" />
+                        {
+                            this.state.address ? (
+                                <div>
+                                    <div>
+                                        {this.state.address}
+                                    </div>
+                                    <div>
+                                        {this.state.city}, {this.state.state} {this.state.zipcode}
+                                    </div>
+                                </div>
+                            ) : (
+                                    <div>No Address Set</div>
+                                )
+                        }
+                        <div className="page__space30" />
+                        <a className="btn" onClick={this.openShippingModal}>Change Shipping Address</a>
+                        {this.state.errorText}
+                    </div>
                     <div>
                         <h2>Order Summary</h2>
                         <div className="page__space30" />
@@ -176,28 +205,10 @@ export default class Checkout extends Component {
                             }
                         </div>
                     </div>
-                    <div>
-                        <h2>Shipping Address:</h2>
-                        <div className="page__space30" />
-                        {
-                            this.state.address ? (
-                                <div>
-                                    <div>
-                                        {this.state.address}
-                                    </div>
-                                    <div>
-                                        {this.state.city}, {this.state.state} {this.state.zipcode}
-                                    </div>
-                                </div>
-                            ) : (
-                                    <div>No Address Set</div>
-                                )
-                        }
-                        <div className="page__space30" />
-                        <a className="btn" onClick={this.openShippingModal}>Change Shipping Address</a>
-                        {this.state.errorText}
-                    </div>
                     <a className="btn-submit" onClick={this.handleCheckout}>Submit Order</a>
+                    <div>
+                        Order Total: ${itemTotal} ({totalItemQty} items total)
+                    </div>
 
                     <ShippingModal
                         shippingModalOpen={this.state.shippingModalOpen}
