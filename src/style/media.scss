@@ -12,12 +12,20 @@
 
 @media screen and (max-width: $media-break1) {
 
+    .form {
+        margin-left: 0px;
+    }
+
     .media-disable {
         display: none;
     }
 
     .page-container {
         padding-top: 80px;
+    }
+
+    .page-container {
+        min-height: calc(100vh - 350px);
     }
 
     .header {
@@ -219,11 +227,23 @@
 }
 
 
-// Fourth media query breakpoint -- product cards in shop
+// Fourth media query breakpoint -- product cards in shop / forms
 
 @media screen and (max-width: $media-break4) {
-    .shop {
+    .form {
+        max-width: 500px;
+        width: auto;
 
+        &__label {
+            font-size: .9em;
+            margin-left: 2px;
+        }
+
+        &__flash-msg {
+            font-size: .7em;
+        }
+    }
+    .shop {
         &__grid {
             grid-template-columns: 1fr;
         }

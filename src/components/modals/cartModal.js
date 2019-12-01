@@ -29,6 +29,7 @@ class CartModal extends Component {
                 marginRight: "-50%",
                 transform: "translate(-50%, -50%)",
                 maxWidth: "600px",
+                minWidth: "300px",
                 minHeight: "430px"
             },
             overlay: {

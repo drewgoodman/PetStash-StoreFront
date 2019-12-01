@@ -28,6 +28,7 @@ class RegisterForm extends Component {
     }
 
     submitForm(event) {
+        window.scrollTo(0, 0);
         event.preventDefault();
         if (this.state.first_name === "" ||
             this.state.last_name === "" ||
