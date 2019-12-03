@@ -6,10 +6,11 @@ export default class Login extends Component {
   constructor(props) {
       super(props)
 
-      this.state = {
-          
-      }
   }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+}
 
   render() {
       return (
